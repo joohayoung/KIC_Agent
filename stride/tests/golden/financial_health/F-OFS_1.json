@@ -1,0 +1,136 @@
+{
+ "case_type": "F-OFS",
+ "sample": "1",
+ "corp_code": "00248974",
+ "corp_name": "하나제약",
+ "status": "ai_verified",
+ "request": {
+  "mode": "single",
+  "company": "00248974",
+  "as_of": "2026-11-05"
+ },
+ "verified_by": "AI 검수(claude.ai)",
+ "verified_at": "2026-11-06",
+ "human_verified": {
+  "verified": false,
+  "by": null,
+  "at": null
+ },
+ "expect": {
+  "period": "2025FY",
+  "fs_rcept_no": "20260320001014",
+  "fin.fs_basis": "OFS",
+  "basis_note": "별도 기준",
+  "separate_only_check": {
+   "no_subsidiary_sentence": true,
+   "consolidated_statements_in_zip": false
+  },
+  "note_sources": [
+   "사업보고서",
+   "감사보고서"
+  ],
+  "cash_krw": 9841089309,
+  "short_term": "missing (단기금융상품 행 없고 기타유동금융자산 행만 있음)",
+  "total_borrowings_krw": 58719602303,
+  "lease_source": "재무상태표",
+  "lease_match": "주석 합계 2,454,602,303 = 재무상태표 유동+비유동 (원 단위)",
+  "fin.net_debt": "missing",
+  "fin.net_debt_to_ebitda": "missing",
+  "operating_income_krw": 25815826289,
+  "depreciation_krw": 10591398680,
+  "amortization_krw": 565158933,
+  "fin.ebitda_krw": 36972383902,
+  "fin.ebitda_margin_pct": 15.44,
+  "fin.debt_ratio_pct": 33.42,
+  "fin.ebitda_interest_coverage": "missing",
+  "interest_note": "이자비용 확인 불가: 이자비용 행 없음(차입원가 자본화 있음)",
+  "fin.audit_opinion": [
+   "적정의견"
+  ]
+ },
+ "check_list": [
+  {
+   "rcept_no": "20260320001014",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260320001014",
+   "where": "I. 회사의 개요 / III. 2. 연결재무제표",
+   "values": [
+    "'연결대상 종속회사 현황(요약) : 해당사항 없음'",
+    "연결재무제표 절에 표 없음. 원문 문구 '하당사항이 없습니다'(원문 오타)",
+    "ZIP에 사업보고서·감사보고서만 있음"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260320001014",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260320001014",
+   "where": "재무제표 주석 34 금융수익과 금융비용",
+   "values": [
+    "금융원가 361,906,280 = 외환차손 340,461,353 + 외화환산손실 21,444,927",
+    "이자비용 행이 없는지 (차입금 562.65억이 있는데도)"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260320001014",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260320001014",
+   "where": "비용의 성격별 분류 / 별도 감사보고서 첨부 현금흐름표",
+   "values": [
+    "감가상각비와 상각비 합산 11,156,557,613",
+    "감가상각비 10,591,398,680",
+    "무형자산상각비 565,158,933"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260320001014",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260320001014",
+   "where": "재무상태표 / 리스 주석",
+   "values": [
+    "현금 9,841,089,309",
+    "유동 리스부채 1,103,424,798 + 비유동 1,351,177,505 = 주석 합계 2,454,602,303",
+    "단기차입금 12,000,000,000, 유동성장기차입금 21,500,000,000, 장기차입금 22,765,000,000",
+    "영업이익 25,815,826,289"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260320001014",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260320001014",
+   "where": "회계감사인의 명칭 및 감사의견",
+   "values": [
+    "당기 적정의견"
+   ],
+   "value_status": [
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  }
+ ],
+ "open_notes": [
+  "주석에 리스부채 합계만 있어 재무상태표 합과 원 단위로 대조한다 (재무 v0.16 9.1, 2026-11-05 결정)",
+  "총차입금은 산출되지만 단기금융상품이 missing이라 순차입금은 missing이다",
+  "후보 3곳 모두 separate_only=True",
+  "이자비용 행이 없고 차입원가 주석에 '자본화된 차입원가 1,318,999,923'이 있다 (재무 9.1a)",
+  "연결재무제표 절 문구는 판정에 쓰지 않는다. 원문 오타가 있어도 separate_only는 True다"
+ ]
+}

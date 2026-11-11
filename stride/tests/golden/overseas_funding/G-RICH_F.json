@@ -1,0 +1,167 @@
+{
+ "case_type": "G-RICH",
+ "sample": "F",
+ "corp_code": "00220613",
+ "corp_name": "넥스틸",
+ "status": "ai_verified",
+ "request": {
+  "mode": "single",
+  "company": "00220613",
+  "as_of": "2026-11-05"
+ },
+ "verified_by": "AI 검수(claude.ai)",
+ "verified_at": "2026-11-05",
+ "review_source": "_review_batch1_검수결과.md (AI 검수, 사람 확인 아님)",
+ "human_verified": {
+  "verified": false,
+  "by": null,
+  "at": null
+ },
+ "expect": {
+  "in_scope": true,
+  "signal_status": "해외 투자 확정",
+  "must_have_signals": [
+   {
+    "signal_type": "S4_confirmed",
+    "rcept_no": "20260722800849",
+    "is_overseas": true,
+    "target_country": "미국",
+    "overseas_amount_krw": 73780000000
+   }
+  ],
+  "financial_base": {
+   "rcept_no": "20260814003809",
+   "period": "2026H1"
+  },
+  "cash_krw": 91580877950,
+  "short_term_krw": 47159690745,
+  "ttm_ocf_krw": 11886539325,
+  "funding_status": [
+   {
+    "rcept_no": "20260629000433",
+    "decision_amount_krw": 50000000000,
+    "result_rcept_no": "20260630800532",
+    "actual_krw": 50000000000,
+    "pay": "20260630",
+    "final": "확정·현금 반영",
+    "fund_use_scopes": {
+     "fdpp_fclt": "domestic",
+     "fdpp_etc": "unknown"
+    },
+    "overseas_candidate_krw": 0,
+    "s5_amount_krw": null,
+    "open_question": "해외 용도 불명 칸: fdpp_etc 10,000,000,000"
+   }
+  ],
+  "confirmed_funding_krw": 0,
+  "unconfirmed_funding_krw": 0,
+  "available_funds_krw": 150627108020,
+  "funding_gap_krw": -76847108020,
+  "funding_gap_ratio": -1.0416,
+  "funding_gap_sign": "negative_or_zero",
+  "investment_notes": [
+   {
+    "rcept_no": "20260722800849",
+    "confirmed_execution_date": "2026-07-31",
+    "date_source_rcept_no": "20260814003809",
+    "excluded": false,
+    "note": "재무 기준일 이후 집행 2026-07-31"
+   }
+  ],
+  "must_not_have_after": "2026-11-05",
+  "max_unverified_findings": 1,
+  "liquidity_draft": {
+   "investment_within_24m_krw": 73780000000,
+   "investment_beyond_24m_krw": 0,
+   "maturing_debt_1y_krw": 133259784966,
+   "dividends_paid_last_fy_krw": 36532810000,
+   "liquidity_uses_krw": 243572594966,
+   "liquidity_surplus_krw": -92945486946,
+   "liquidity_sources_to_uses": 0.6184074527802517,
+   "status": "draft",
+   "note": "draft 2026-11-10: 방향 수정 지표. 이미 검수한 구성(현금·단기금융상품·TTM·확정 조달·투자액)에 새로 읽은 만기 차입금·배당금·예정일을 더한 값. 만기 차입금·배당금은 원문 대조 전이라 사람 검수 필요"
+  }
+ },
+ "check_list": [
+  {
+   "rcept_no": "20260722800849",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260722800849",
+   "where": "타법인 취득결정",
+   "values": [
+    "Tex-Isle, Inc., 국적 미국",
+    "취득금액 737.8억 (73,780,000,000)",
+    "지분비율 50.00%",
+    "취득목적: 미국 현지 생산 및 유통 기반 확보"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260629000433",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260629000433",
+   "where": "전환사채권 발행결정 정정본",
+   "values": [
+    "권면총액 500억",
+    "시설 400억 (포항3공장, 국내), 기타 100억 (해외 여부 불명)",
+    "납입일 2026-06-30 (예정)"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260630800532",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260630800532",
+   "where": "발행결과",
+   "values": [
+    "실제발행금액 500억",
+    "납입일 2026-06-30 (재무 기준일과 같아 현금 반영)"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260814003809",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814003809",
+   "where": "2026 반기보고서",
+   "values": [
+    "현금및현금성자산 915.8억",
+    "단기금융상품 471.6억",
+    "반기 누적 영업현금흐름 159.6억, 전년 동기 278.6억"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260414002511",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260414002511",
+   "where": "2025 사업보고서 정정본 현금흐름표",
+   "values": [
+    "연간 영업현금흐름 237.9억"
+   ],
+   "value_status": [
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  }
+ ],
+ "open_notes": [
+  "반기보고서 주석에 2026-07-31 납입 완료. 재무 기준일 2026-06-30 이후라 투자액 유지 (7.10 4a)",
+  "CB 시설 400억은 국내. api_fields.md 19장의 해외 후보 400은 프로브의 단순 합산 오류였고 이 정답지 기대값에 쓰인 적 없음"
+ ]
+}

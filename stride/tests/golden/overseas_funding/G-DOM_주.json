@@ -1,0 +1,177 @@
+{
+ "case_type": "G-DOM",
+ "sample": "주",
+ "corp_code": "00143314",
+ "corp_name": "에이엔피",
+ "status": "ai_verified",
+ "request": {
+  "mode": "single",
+  "company": "00143314",
+  "as_of": "2026-11-05"
+ },
+ "verified_by": "AI 검수(claude.ai)",
+ "verified_at": "2026-11-06",
+ "human_verified": {
+  "verified": false,
+  "by": null,
+  "at": null
+ },
+ "expect": {
+  "in_scope": false,
+  "signal_status": "범위 밖",
+  "scope_reason_has": "G2",
+  "must_not_have_signal_types": [
+   "S4_confirmed"
+  ],
+  "must_have_signals": [
+   {
+    "signal_type": "S5_funding",
+    "rcept_no": "20260213002755",
+    "fund_use_scopes": {
+     "fdpp_fclt": "domestic"
+    },
+    "overseas_amount_krw": null
+   }
+  ],
+  "funding_status": [
+   {
+    "rcept_no": "20260213002755",
+    "decision_amount_krw": 1000000000,
+    "result_rcept_no": "20260223801037",
+    "actual_krw": 1000000000,
+    "pay": "20260223"
+   }
+  ],
+  "rule_only_no_llm": [
+   {
+    "rcept_no": "20250409002413",
+    "rule": "R3 채무상환뿐",
+    "purpose_category": "refinancing",
+    "amount_krw": 9000000000
+   }
+  ],
+  "periodic_plan_items_expected": 0,
+  "must_not_have_after": "2026-11-05"
+ },
+ "check_list": [
+  {
+   "rcept_no": "20260213002755",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260213002755",
+   "where": "유상증자 결정",
+   "values": [
+    "시설자금 1,000,000,000 '고다층 PCB 제조설비 구축'",
+    "시설 칸 외 다른 용도 칸 없음",
+    "소재지 표기: 시설 칸에는 없음"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260223801037",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260223801037",
+   "where": "발행결과",
+   "values": [
+    "실제발행금액 1,000,000,000",
+    "납입일 2026-02-23"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20250409002413",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250409002413",
+   "where": "2025 CB 결정",
+   "values": [
+    "권면총액 9,000,000,000",
+    "채무상환자금 9,000,000,000 (제20회·제22회 전환사채)"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20250411800407",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250411800407",
+   "where": "2025 CB 발행결과",
+   "values": [
+    "실제발행금액 9,000,000,000",
+    "납입일 2025-04-11"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20250416800495",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250416800495",
+   "where": "타법인 처분결정",
+   "values": [
+    "주식회사 스튜디오2046, 국적 대한민국 (처분이라 투자 신호 아님)"
+   ],
+   "value_status": [
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260323000919",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260323000919",
+   "where": "2025 사업보고서 II. 사업의 내용",
+   "values": [
+    "해외 공장·법인·인수·합작·진출·수출 확대 계획 문구가 없는지",
+    "코드 검색 2건: '선진 부품기업들이 국내에 진출', '납품 30일 후 인수증 발급' (회사 계획 아님)"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260323000919",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260323000919",
+   "where": "연결재무제표 주석 1 종속기업의 개요",
+   "values": [
+    "(주)우진 대한민국",
+    "(주)스튜디오2046 대한민국",
+    "루츠컴퍼니(주) 대한민국",
+    "본사 인천광역시 남동구 남동대로 248"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260814001901",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814001901",
+   "where": "2026 반기보고서 II. 사업의 내용",
+   "values": [
+    "해외 공장·법인·인수·합작·진출·수출 확대 계획 문구가 없는지"
+   ],
+   "value_status": [
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  }
+ ],
+ "open_notes": [
+  "종속회사 소재지 확인 (사용자 조건): 본문 상세표는 2곳, 연결 주석은 손자회사 포함 3곳이고 모두 대한민국. 해외 법인이 아니라 후보를 유지했다",
+  "관계기업(종속 아님) 케이피유폼텍인도, 소재지 인도, 지분 40%, 장부금액 1천원이 있다. 2025년 신규 공시나 계획 문구는 없다",
+  "시설 칸에 소재지가 없고 근거는 본사·종속회사 소재지라 LLM 라벨이 unknown일 수 있다. unknown이면 open_question이 추가되고 in_scope 결과는 같다"
+ ]
+}

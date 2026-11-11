@@ -1,0 +1,192 @@
+{
+ "case_type": "G-POS",
+ "sample": "주",
+ "corp_code": "00367400",
+ "corp_name": "모티브링크",
+ "status": "ai_verified_partial",
+ "request": {
+  "mode": "single",
+  "company": "00367400",
+  "as_of": "2026-11-05"
+ },
+ "verified_by": "AI 검수(claude.ai)",
+ "verified_at": "2026-11-09",
+ "human_verified": {
+  "verified": false,
+  "by": null,
+  "at": null
+ },
+ "expect": {
+  "in_scope": true,
+  "signal_status": "해외 투자 확정",
+  "must_have_signals": [
+   {
+    "signal_type": "S4_confirmed",
+    "rcept_no": "20260917900571",
+    "is_overseas": true,
+    "purpose_category": "growth_investment",
+    "target_country": "인도",
+    "overseas_amount_krw": 14766693600
+   },
+   {
+    "signal_type": "S4_confirmed",
+    "rcept_no": "20260917900593",
+    "is_overseas": true,
+    "target_country": "인도",
+    "overseas_amount_krw": 8548454250
+   }
+  ],
+  "no_signal": [],
+  "open_questions": [
+   "목적에 운영자금 포함, 금액 구분 없음: 20260917900571"
+  ],
+  "financial_base": {
+   "rcept_no": "20260814000910",
+   "period": "2026H1"
+  },
+  "cash_krw": 431280512,
+  "short_term_krw": 13726436365,
+  "ttm_ocf_krw": -213847534,
+  "confirmed_funding_krw": 0,
+  "unconfirmed_funding_krw": 0,
+  "available_funds_krw": 13943869343,
+  "overseas_investment_krw": 14766693600,
+  "funding_gap_krw": 822824257,
+  "funding_gap_ratio": 0.0557,
+  "funding_gap_sign": "positive",
+  "investment_notes": [
+   {
+    "rcept_no": "20260917900571",
+    "excluded": false,
+    "scheduled_date": "2027-12-31",
+    "note": "연결 내부 출자, 집행 시점 확인 불가"
+   }
+  ],
+  "must_not_have_after": "2026-11-05",
+  "liquidity_draft": {
+   "investment_within_24m_krw": 14766693600,
+   "investment_beyond_24m_krw": 0,
+   "maturing_debt_1y_krw": 10793560000,
+   "dividends_paid_last_fy_krw": 0,
+   "liquidity_uses_krw": 25560253600,
+   "liquidity_surplus_krw": -11616384257,
+   "liquidity_sources_to_uses": 0.5455293817194364,
+   "status": "draft",
+   "note": "draft 2026-11-10: 방향 수정 지표. 이미 검수한 구성(현금·단기금융상품·TTM·확정 조달·투자액)에 새로 읽은 만기 차입금·배당금·예정일을 더한 값. 만기 차입금·배당금은 원문 대조 전이라 사람 검수 필요"
+  }
+ },
+ "check_list": [
+  {
+   "rcept_no": "20260917900571",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260917900571",
+   "where": "타법인 취득결정 (대표 프로젝트)",
+   "values": [
+    "MOTILINK INDIA PRIVATE LIMITED, 회사와 관계 종속회사",
+    "취득금액 14,766,693,600 (USD 10,792,000)",
+    "취득목적 '인도시장 사업확장 및 운영자금 확보', 현금출자, 지분 99.99%",
+    "상대방 표 국적 인도 (회사명 칸에는 국적 없음)",
+    "취득예정일자 2027-12-31, 이사회 2026-09-17"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260917900593",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260917900593",
+   "where": "타법인 취득결정 (같은 날 다른 인도 법인)",
+   "values": [
+    "DNM AUTOPOWER PRIVATE LIMITED, 종속회사",
+    "취득금액 8,548,454,250",
+    "취득목적 '인도시장 공급망 확대 및 해외사업 진출'"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20251001900692",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20251001900692",
+   "where": "타법인 취득결정 원공시 (베트남)",
+   "values": [
+    "LONG BINH ELECTRONICS CO.,LTD., 취득금액 4,209,600,000"
+   ],
+   "value_status": [
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260911900290",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260911900290",
+   "where": "같은 공시 정정",
+   "values": [
+    "취득금액 2,245,120,000으로 축소, 취득예정일자 2027-09-30",
+    "정정사유 '투자계획 변경'"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260814000910",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814000910",
+   "where": "2026 반기보고서 연결",
+   "values": [
+    "현금및현금성자산 431,280,512",
+    "단기금융상품 13,726,436,365",
+    "반기 누적 영업현금흐름 -350,891,328, 전년 동기 -518,878,737"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260323001100",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260323001100",
+   "where": "2025 사업보고서 연결 현금흐름표",
+   "values": [
+    "연간 영업현금흐름 -381,834,943 (TTM -213,847,534 계산 입력)"
+   ],
+   "value_status": [
+    "draft"
+   ],
+   "status": "draft",
+   "note": "2026-11-09 검수: 원문 캐시가 없어 확인 보류. 캐시 저장함 (data/cache)"
+  },
+  {
+   "rcept_no": "20260702900639",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260702900639",
+   "where": "최대주주 변경 계약",
+   "values": [
+    "양수인 동양이엔피 주식회사, 43.41%"
+   ],
+   "value_status": [
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  }
+ ],
+ "open_notes": [
+  "2026-11-09 G-POS 주 후보로 확정 (사용자 결정). 검수 결과 _review_batch1_검수결과.md 'G-POS 새 주 후보' 절",
+  "조건 (a) 거래 가능: 2024-05~2026-11-05 공시 목록에 거래정지·관리종목·상장폐지·실질심사 공시 없음. (b) 투자액 147.67억 > 현금+단기금융상품 141.58억. (c) 공백 +8.23억",
+  "공백이 작다 (비율 0.0557). 같은 날 인도 법인 2건은 회사명이 달라 별도 프로젝트라 합산하지 않는다 (7.8). 합치면 232.15억이지만 대표 금액은 큰 쪽 1건이다",
+  "취득목적에 운영자금 확보가 함께 있다. 같은 날 종속회사 증자 공시가 없어 칸 분할 대상이 아니고 전액이 투자액이다. 칸 구분이 없어 나눌 근거가 없다",
+  "2026-07 최대주주 변경 계약이 있다. 해외 투자 판정과 직접 관련은 없다",
+  "반기 재무상태표에 '유동금융자산' 924,215,150 행도 있다. 단기금융상품 행이 있어 현 규칙(3장)에서 영향이 없다",
+  "송금 예정일이 2027-12-31이라 실제 집행 시점이 멀다"
+ ]
+}

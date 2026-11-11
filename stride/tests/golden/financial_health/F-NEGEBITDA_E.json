@@ -1,0 +1,103 @@
+{
+ "case_type": "F-NEGEBITDA",
+ "sample": "E",
+ "corp_code": "00642541",
+ "corp_name": "제이에스링크",
+ "status": "ai_verified",
+ "request": {
+  "mode": "single",
+  "company": "00642541",
+  "as_of": "2026-11-05"
+ },
+ "verified_by": "AI 검수(claude.ai)",
+ "verified_at": "2026-11-05",
+ "human_verified": {
+  "verified": false,
+  "by": null,
+  "at": null
+ },
+ "expect": {
+  "period": "2025FY",
+  "fs_rcept_no": "20260323001251",
+  "operating_income_krw": -12486699717,
+  "depreciation_krw": 2752690031,
+  "amortization_krw": 12328548,
+  "depreciation_source": "연결감사보고서 첨부 현금흐름표와 성격별 분류 합계 대조",
+  "fin.ebitda_krw": -9721681138,
+  "fin.net_debt_krw": 2881469893,
+  "fin.net_debt_to_ebitda": null,
+  "net_debt_to_ebitda_note": "EBITDA ≤ 0으로 계산 안 함",
+  "fin.ebitda_margin_pct": -50.33,
+  "interest_expense_krw": 2140125261,
+  "interest_source": "금융원가 주석 (금융비용 표 + 첨부 현금흐름표 조정 행 일치)",
+  "fin.ebitda_interest_coverage": -4.54,
+  "coverage_note": "EBITDA 음수"
+ },
+ "check_list": [
+  {
+   "rcept_no": "20260323001251",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260323001251",
+   "where": "2025 사업보고서 손익계산서",
+   "values": [
+    "영업손실 -12,486,699,717",
+    "매출액 19,316,467,820"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260323001251",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260323001251",
+   "where": "비용의 성격별 분류 / 연결감사보고서 첨부 현금흐름표",
+   "values": [
+    "감가상각비와 무형자산상각비 합산 2,765,018,579",
+    "감가상각비(사용권 포함) 2,752,690,031",
+    "무형자산상각비 12,328,548"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260323001251",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260323001251",
+   "where": "재무상태표·리스 주석",
+   "values": [
+    "현금 40,430,705,647",
+    "단기금융상품 0",
+    "총차입금 43,312,175,540 (리스 주석 값 포함)"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260323001251",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260323001251",
+   "where": "금융비용 표 / 연결감사보고서 첨부 현금흐름표",
+   "values": [
+    "이자비용 2,140,125,261",
+    "두 표의 값이 같은지 (별도 감사보고서 값이 아닌지)"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  }
+ ],
+ "open_notes": [
+  "AI 검수로 기대값 변경: 이자비용 missing → 21.4억 채택. 값은 본문이 아니라 연결감사보고서 쪽에서 두 표로 확인된다",
+  "이자비용 missing 시험은 F-NETCASH-NOEBITDA(표끼리 값 다름)로 옮겼다",
+  "EBITDA 음수라 EBITDA/이자비용도 음수. 값 그대로 + note \"EBITDA 음수\" (재무 3.2)"
+ ]
+}

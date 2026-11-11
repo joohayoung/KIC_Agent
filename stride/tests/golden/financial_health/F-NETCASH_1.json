@@ -1,0 +1,105 @@
+{
+ "case_type": "F-NETCASH",
+ "sample": "1",
+ "corp_code": "00579999",
+ "corp_name": "고영",
+ "status": "ai_verified",
+ "request": {
+  "mode": "single",
+  "company": "00579999",
+  "as_of": "2026-11-05"
+ },
+ "verified_by": "AI 검수(claude.ai)",
+ "verified_at": "2026-11-06",
+ "human_verified": {
+  "verified": false,
+  "by": null,
+  "at": null
+ },
+ "expect": {
+  "period": "2025FY",
+  "fs_rcept_no": "20260312000804",
+  "fin.fs_basis": "CFS",
+  "cash_krw": 38350539836,
+  "short_term_krw": 106020898498,
+  "total_borrowings_krw": 16755506000,
+  "total_borrowings_note": "리스부채 출처: 리스 주석",
+  "fin.net_debt_krw": -127615932334,
+  "net_debt_sign": "negative",
+  "operating_income_krw": 17342338477,
+  "depreciation_krw": 11215573000,
+  "amortization_krw": 2581610000,
+  "fin.ebitda_krw": 31139521477,
+  "fin.net_debt_to_ebitda": -4.1,
+  "interest_expense_krw": 738345000,
+  "interest_note": "이자비용 출처: 금융원가 주석",
+  "fin.ebitda_interest_coverage": 42.17,
+  "fin.ebitda_margin_pct": 13.38,
+  "fin.audit_opinion": [
+   "적정의견"
+  ]
+ },
+ "check_list": [
+  {
+   "rcept_no": "20260312000804",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260312000804",
+   "where": "2025 사업보고서 재무상태표",
+   "values": [
+    "현금 38,350,539,836",
+    "단기금융상품 106,020,898,498",
+    "총차입금 16,755,506,000 (리스 주석 값 포함, 재무상태표에 리스부채 행 없음)"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260312000804",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260312000804",
+   "where": "비용의 성격별 분류 / 영업에서 창출된 현금",
+   "values": [
+    "감가상각비 4,430,253,000",
+    "사용권자산상각비 6,785,320,000",
+    "무형자산상각비 2,581,610,000",
+    "영업이익 17,342,338,477"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260312000804",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260312000804",
+   "where": "금융비용 표 / 현금흐름 조정 표",
+   "values": [
+    "이자비용 738,345,000 (두 표 일치)"
+   ],
+   "value_status": [
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260312000804",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260312000804",
+   "where": "회계감사인의 명칭 및 감사의견",
+   "values": [
+    "당기 적정의견"
+   ],
+   "value_status": [
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  }
+ ],
+ "open_notes": [
+  "순차입금/EBITDA -4.1는 음수 그대로 출력한다"
+ ]
+}

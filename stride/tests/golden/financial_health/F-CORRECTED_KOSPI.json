@@ -1,0 +1,84 @@
+{
+ "case_type": "F-CORRECTED",
+ "sample": "KOSPI",
+ "corp_code": "00125974",
+ "corp_name": "삼부토건",
+ "status": "ai_verified",
+ "request": {
+  "mode": "single",
+  "company": "00125974",
+  "as_of": "2026-04-08"
+ },
+ "verified_by": "AI 검수(claude.ai)",
+ "verified_at": "2026-11-06",
+ "human_verified": {
+  "verified": false,
+  "by": null,
+  "at": null
+ },
+ "expect": {
+  "report_selected": {
+   "rcept_no": "20260407002515",
+   "rcept_dt": "20260407"
+  },
+  "api_response_rcept_no": "20260901000001",
+  "api_rcept_in_asof_list": false,
+  "fin.audit_opinion": "unknown",
+  "audit_note": "정정 전 원본 값 확인 불가",
+  "metrics_2025FY_data_status": "unknown",
+  "metrics_note": "정정 전 원본 값 확인 불가",
+  "must_not_output_values": [
+   "적정의견"
+  ],
+  "human_reference": {
+   "audit_opinion": "의견거절",
+   "source_rcept_no": "20260407002515",
+   "note": "사람 기준 정답. 시스템 기대값이 아니다. document.xml 원본 읽기는 Phase 2로 유지(재무 9.2)"
+  },
+  "must_not_have_after": "2026-04-08"
+ },
+ "check_list": [
+  {
+   "rcept_no": "20260407002515",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260407002515",
+   "where": "2025 사업보고서 원본, 독립된 감사인의 감사보고서",
+   "values": [
+    "감사의견 '의견거절'",
+    "접수일 2026-04-07"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "draft",
+   "verification_method": [
+    "document",
+    "api_response"
+   ]
+  },
+  {
+   "rcept_no": "20260901000001",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260901000001",
+   "where": "2025 사업보고서 정정본",
+   "values": [
+    "접수일 2026-09-01",
+    "정정사유 2025사업년도 재감사",
+    "API 감사의견 '적정의견' (as_of 시점에는 알 수 없는 값)"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "draft",
+   "verification_method": [
+    "api_response",
+    "document",
+    "document"
+   ]
+  }
+ ],
+ "open_notes": [
+  "F-FULLIMPAIR_KOSPI는 as_of를 정정 다음 날로 두어 같은 회사의 정정 후 값을 시험한다. 이 케이스는 정정 전 시점을 시험한다"
+ ]
+}

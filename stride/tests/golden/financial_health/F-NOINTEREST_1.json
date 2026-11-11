@@ -1,0 +1,98 @@
+{
+ "case_type": "F-NOINTEREST",
+ "sample": "1",
+ "corp_code": "00248974",
+ "corp_name": "하나제약",
+ "status": "ai_verified",
+ "request": {
+  "mode": "single",
+  "company": "00248974",
+  "as_of": "2026-11-05"
+ },
+ "verified_by": "AI 검수(claude.ai)",
+ "verified_at": "2026-11-06",
+ "human_verified": {
+  "verified": false,
+  "by": null,
+  "at": null
+ },
+ "expect": {
+  "period": "2025FY",
+  "fs_rcept_no": "20260320001014",
+  "fin.fs_basis": "OFS",
+  "fin.ebitda_krw": 36972383902,
+  "fin.ebitda_interest_coverage": "missing",
+  "interest_note": "이자비용 확인 불가: 이자비용 행 없음(차입원가 자본화 있음)",
+  "total_borrowings_krw": 58719602303,
+  "must_not_use": [
+   "금융비용 합계",
+   "이자의 지급",
+   "리스부채에 대한 이자비용",
+   "0"
+  ]
+ },
+ "check_list": [
+  {
+   "rcept_no": "20260320001014",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260320001014",
+   "where": "재무제표 주석 34 금융수익과 금융비용",
+   "values": [
+    "금융원가 361,906,280 = 외환차손 340,461,353 + 외화환산손실 21,444,927",
+    "이자비용 행 없음"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260320001014",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260320001014",
+   "where": "차입원가 주석 / 현금흐름표",
+   "values": [
+    "자본화된 차입원가 1,318,999,923",
+    "이자의 지급 1,214,811,511"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260320001014",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260320001014",
+   "where": "재무상태표",
+   "values": [
+    "단기차입금 12,000,000,000, 유동성장기차입금 21,500,000,000, 장기차입금 22,765,000,000",
+    "유동 리스부채 1,103,424,798 + 비유동 1,351,177,505 = 2,454,602,303"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260320001014",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260320001014",
+   "where": "손익계산서 / 비용의 성격별 분류 / 첨부 현금흐름표",
+   "values": [
+    "영업이익 25,815,826,289",
+    "감가상각비 10,591,398,680",
+    "무형자산상각비 565,158,933"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  }
+ ],
+ "open_notes": [
+  "F-OFS_1과 같은 공시다. 디어유는 2026-11-05 정정으로 이자비용 2.01억을 채택하게 되어 이 유형에서 뺐다",
+  "미검수 참고: 리스 주석에 '리스부채에 대한 이자비용 89,573,106'이 있으나 금융원가 표에는 없다. 이 값으로 채우지 않는다"
+ ]
+}

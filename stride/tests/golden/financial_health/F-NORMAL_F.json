@@ -1,0 +1,171 @@
+{
+ "case_type": "F-NORMAL",
+ "sample": "F",
+ "corp_code": "00220613",
+ "corp_name": "넥스틸",
+ "status": "ai_verified",
+ "request": {
+  "mode": "single",
+  "company": "00220613",
+  "as_of": "2026-11-05"
+ },
+ "verified_by": "AI 검수(claude.ai)",
+ "verified_at": "2026-11-05",
+ "review_source": "_review_batch1_검수결과.md (AI 검수, 사람 확인 아님)",
+ "human_verified": {
+  "verified": false,
+  "by": null,
+  "at": null
+ },
+ "expect": {
+  "role": "금융원가 주석 이자비용 보조 케이스",
+  "latest_year_all_core_computed": true,
+  "years": {
+   "2023FY": {
+    "fs_rcept_no": "20240321001898",
+    "total_borrowings_krw": null,
+    "total_borrowings_note": "미분류 차입 계정: 유동성리스부채, 유동성장기부채, 단기차입금, 유동성사채, 장기차입금, 비유동성리스부채, 사채",
+    "net_debt_krw": null,
+    "ebitda_krw": 169098943358,
+    "ebitda_note": null,
+    "net_debt_missing_reason": "미분류 차입 계정: 유동성리스부채, 유동성장기부채, 단기차입금, 유동성사채, 장기차입금, 비유동성리스부채, 사채",
+    "coverage_missing_reason": null,
+    "interest_source": "금융원가 주석",
+    "operating_income_krw": 157337247358,
+    "revenue_krw": 619052056916,
+    "depreciation_krw": 11739519000,
+    "amortization_krw": 22177000,
+    "interest_expense_krw": 5855253000,
+    "net_debt_to_ebitda": null,
+    "ebitda_interest_coverage": 28.88,
+    "ebitda_margin_pct": 27.32,
+    "debt_ratio_pct": 44.4,
+    "audit_opinion_raw": [
+     "적정"
+    ]
+   },
+   "2024FY": {
+    "fs_rcept_no": "20250331002907",
+    "total_borrowings_krw": null,
+    "total_borrowings_note": "미분류 차입 계정: 단기차입금, 유동성장기부채, 유동성사채, 장기차입금",
+    "net_debt_krw": null,
+    "ebitda_krw": 77959261400,
+    "ebitda_note": null,
+    "net_debt_missing_reason": "미분류 차입 계정: 단기차입금, 유동성장기부채, 유동성사채, 장기차입금",
+    "coverage_missing_reason": null,
+    "interest_source": "금융원가 주석",
+    "operating_income_krw": 63204878400,
+    "revenue_krw": 552365337649,
+    "depreciation_krw": 14731135000,
+    "amortization_krw": 23248000,
+    "interest_expense_krw": 7927628000,
+    "net_debt_to_ebitda": null,
+    "ebitda_interest_coverage": 9.83,
+    "ebitda_margin_pct": 14.11,
+    "debt_ratio_pct": 48.79,
+    "audit_opinion_raw": [
+     "적정의견"
+    ]
+   },
+   "2025FY": {
+    "fs_rcept_no": "20260414002511",
+    "total_borrowings_krw": 148602716127,
+    "total_borrowings_note": null,
+    "net_debt_krw": 97761870322,
+    "ebitda_krw": 55551889349,
+    "ebitda_note": null,
+    "net_debt_missing_reason": null,
+    "coverage_missing_reason": null,
+    "interest_source": "금융원가 주석",
+    "operating_income_krw": 39942217349,
+    "revenue_krw": 550992457557,
+    "depreciation_krw": 15582730000,
+    "amortization_krw": 26942000,
+    "interest_expense_krw": 3581545000,
+    "net_debt_to_ebitda": 1.76,
+    "ebitda_interest_coverage": 15.51,
+    "ebitda_margin_pct": 10.08,
+    "debt_ratio_pct": 50.71,
+    "audit_opinion_raw": [
+     "적정의견"
+    ]
+   }
+  },
+  "tolerance": 0.01,
+  "fs_basis": "CFS"
+ },
+ "check_list": [
+  {
+   "rcept_no": "20260414002511",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260414002511",
+   "where": "2025 사업보고서 재무제표·주석",
+   "values": [
+    "영업이익 399.4억, 매출액 5509.9억",
+    "감가상각비(사용권 포함) 155.8억, 무형자산상각비 0.3억 (비용의 성격별 분류·영업에서 창출된 현금)",
+    "총차입금 1486.0억 (차입·사채·리스부채 행 합)",
+    "현금 485.8억, 단기금융상품 22.6억",
+    "이자비용 35.8억 (출처 금융원가 주석)",
+    "감사의견 적정의견"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified",
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20250331002907",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250331002907",
+   "where": "2024 사업보고서",
+   "values": [
+    "영업이익 632.0억, 매출액 5523.7억",
+    "감가상각비 147.3억, 무형자산상각비 0.2억",
+    "차입 계정 상태: 미분류 차입 계정: 단기차입금, 유동성장기부채, 유동성사채, 장기차입금",
+    "이자비용 79.3억 (출처 금융원가 주석)"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "verification_method": [
+    "document",
+    "document",
+    "api_response",
+    "document"
+   ],
+   "status": "draft"
+  },
+  {
+   "rcept_no": "20240321001898",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20240321001898",
+   "where": "2023 사업보고서",
+   "values": [
+    "영업이익 1573.4억, 매출액 6190.5억",
+    "EBITDA 상태: 1691.0",
+    "차입 계정 상태: 미분류 차입 계정: 유동성리스부채, 유동성장기부채, 단기차입금, 유동성사채, 장기차입금, 비유동성리스부채, 사채"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "verification_method": [
+    "document",
+    "document",
+    "api_response"
+   ],
+   "status": "draft"
+  }
+ ],
+ "open_notes": [
+  "보조 케이스. 현금흐름 조정 행이 없어 이자비용은 금융원가 주석 값 (재무 9.1a 채택)",
+  "2023 EBITDA는 N·C가 감가와 사용권을 다르게 나눴지만 합계가 같아 산출한다 (재무 v0.20 9.1a). 이전 '출처 불일치'는 오판",
+  "2023·2024 순차입금은 표준코드 미사용 차입 행으로 missing"
+ ]
+}

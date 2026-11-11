@@ -1,0 +1,80 @@
+{
+ "case_type": "F-AUDIT",
+ "sample": "KOSDAQ 후보",
+ "corp_code": "01110678",
+ "corp_name": "유틸렉스",
+ "status": "ai_verified",
+ "request": {
+  "mode": "single",
+  "company": "01110678",
+  "as_of": "2026-03-28"
+ },
+ "verified_by": "AI 검수(claude.ai)",
+ "verified_at": "2026-11-05",
+ "review_source": "_review_batch1_검수결과.md (AI 검수, 사람 확인 아님)",
+ "human_verified": {
+  "verified": false,
+  "by": null,
+  "at": null
+ },
+ "expect": {
+  "bsns_year": 2025,
+  "fin.audit_opinion": "의견거절",
+  "audit_opinion_map": "의견거절",
+  "fin.audit_scope_limitation": "unknown",
+  "orchestrator_rule_note": "감사범위 제한 부분은 확인 불가",
+  "capital_stock_krw": 18417428000,
+  "equity_ex_nci_krw": 15276891579,
+  "capital_impairment_ratio_pct": 17.05,
+  "fs_basis": "CFS",
+  "must_not_have_after": "2026-03-28",
+  "annual_rcept_no": "20260327001702"
+ },
+ "check_list": [
+  {
+   "rcept_no": "20260327001702",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260327001702",
+   "where": "사업보고서 '회계감사인의 명칭 및 감사의견'",
+   "values": [
+    "제11기 당기 감사의견 의견거절",
+    "감사인 삼정회계법인"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260327001702",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260327001702",
+   "where": "첨부 감사보고서",
+   "values": [
+    "의견거절 근거 문단",
+    "근거가 감사범위 제한인지 (API는 판별 불가, 기대값 unknown)"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260327001702",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260327001702",
+   "where": "재무상태표",
+   "values": [
+    "자본금 184.2억",
+    "자기자본 152.8억 (자본잠식률 17.05%)"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  }
+ ],
+ "open_notes": [
+  "사람 기준 정답: 원문 감사보고서에 '이러한 감사범위 제한으로' 문구 있음. 시스템 기대값은 API 칸으로 판별할 수 없어 unknown 유지"
+ ]
+}

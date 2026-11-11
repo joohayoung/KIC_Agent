@@ -1,0 +1,58 @@
+# 오케스트레이터 개발문서 5장. 원문으로 확인한 규칙만 둔다.
+# 출처: 한국거래소 KIND 유가증권시장 공시가이드(kospi_1.pdf), 코스닥시장 공시가이드(kosdaq_2.pdf), 2026.2.2 게시, 2026-11-04 원문 확인
+- rule_id: R1-KS
+  market: KOSPI
+  inputs: [fin.audit_opinion]
+  condition: {audit_in: [부적정, 의견거절]}
+  label: 상장폐지 사유 해당
+  source: 한국거래소 KIND 유가증권시장 공시가이드
+  source_date: "2026-02-02"
+  source_url: https://kind.krx.co.kr/external/notice/dst/20260202/kospi_1.pdf
+- rule_id: R1b-KS
+  market: KOSPI
+  inputs: [fin.audit_opinion, fin.audit_scope_limitation]
+  condition: {scope_limited_qualified: true}
+  label: 관리종목 지정 사유 해당
+  source: 한국거래소 KIND 유가증권시장 공시가이드
+  source_date: "2026-02-02"
+  source_url: https://kind.krx.co.kr/external/notice/dst/20260202/kospi_1.pdf
+- rule_id: R2-KS
+  market: KOSPI
+  inputs: [fin.capital_impairment_ratio]
+  condition: {any: [{metric: fin.capital_impairment_ratio, gte: 100}]}
+  label: 상장폐지 사유 해당
+  source: 한국거래소 KIND 유가증권시장 공시가이드
+  source_date: "2026-02-02"
+  source_url: https://kind.krx.co.kr/external/notice/dst/20260202/kospi_1.pdf
+- rule_id: R3-KS
+  market: KOSPI
+  inputs: [fin.capital_impairment_ratio]
+  condition: {any: [{metric: fin.capital_impairment_ratio, gte: 50, lt: 100}]}
+  label: 관리종목 지정 사유 해당
+  source: 한국거래소 KIND 유가증권시장 공시가이드
+  source_date: "2026-02-02"
+  source_url: https://kind.krx.co.kr/external/notice/dst/20260202/kospi_1.pdf
+- rule_id: R1-KQ
+  market: KOSDAQ
+  inputs: [fin.audit_opinion, fin.audit_scope_limitation]
+  condition: {audit_in: [부적정, 의견거절], scope_limited_qualified: true}
+  label: 상장폐지 사유 해당
+  source: 한국거래소 KIND 코스닥시장 공시가이드
+  source_date: "2026-02-02"
+  source_url: https://kind.krx.co.kr/external/notice/dst/20260202/kosdaq_2.pdf
+- rule_id: R2-KQ
+  market: KOSDAQ
+  inputs: [fin.capital_impairment_ratio]
+  condition: {any: [{metric: fin.capital_impairment_ratio, gte: 100}]}
+  label: 상장폐지 사유 해당
+  source: 한국거래소 KIND 코스닥시장 공시가이드
+  source_date: "2026-02-02"
+  source_url: https://kind.krx.co.kr/external/notice/dst/20260202/kosdaq_2.pdf
+- rule_id: R3-KQ
+  market: KOSDAQ
+  inputs: [fin.capital_impairment_ratio, fin.equity_ex_nci]
+  condition: {any: [{metric: fin.capital_impairment_ratio, gte: 50, lt: 100}, {metric: fin.equity_ex_nci, lt: 1000000000}]}
+  label: 관리종목 지정 사유 해당
+  source: 한국거래소 KIND 코스닥시장 공시가이드
+  source_date: "2026-02-02"
+  source_url: https://kind.krx.co.kr/external/notice/dst/20260202/kosdaq_2.pdf

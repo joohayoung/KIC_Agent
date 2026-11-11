@@ -1,0 +1,22 @@
+[project]
+name = "stride"
+version = "0.0.1"
+requires-python = ">=3.11"
+dependencies = [
+  "pydantic>=2", "pydantic-settings", "httpx", "tenacity", "pyyaml",
+  "langgraph", "lxml", "beautifulsoup4", "pandas", "jinja2", "python-dateutil",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+ui = ["streamlit", "plotly", "altair"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+markers = [
+  "live: 실제 외부 API 호출 (기본 실행에서 제외)",
+  "llm: 실제 claude -p 호출 (기본 실행에서 제외: -m llm)",
+  "golden: 골든 정답지 실행. 캐시된 DART 응답과 .env 키를 쓴다 (기본 실행에서 제외: -m golden)",
+]
+addopts = "-m 'not live and not golden and not llm'"

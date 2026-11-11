@@ -1,0 +1,171 @@
+{
+ "case_type": "F-NORMAL",
+ "sample": "G",
+ "corp_code": "00231363",
+ "corp_name": "LG유플러스",
+ "status": "ai_verified",
+ "request": {
+  "mode": "single",
+  "company": "00231363",
+  "as_of": "2026-11-05"
+ },
+ "verified_by": "AI 검수(claude.ai)",
+ "verified_at": "2026-11-05",
+ "review_source": "_review_batch1_검수결과.md (AI 검수, 사람 확인 아님)",
+ "human_verified": {
+  "verified": false,
+  "by": null,
+  "at": null
+ },
+ "expect": {
+  "role": "주 케이스",
+  "latest_year_all_core_computed": true,
+  "years": {
+   "2023FY": {
+    "fs_rcept_no": "20240313001130",
+    "total_borrowings_krw": null,
+    "total_borrowings_note": "미분류 차입 계정: 단기차입금",
+    "net_debt_krw": null,
+    "ebitda_krw": 3569267000000,
+    "ebitda_note": null,
+    "net_debt_missing_reason": "미분류 차입 계정: 단기차입금",
+    "coverage_missing_reason": null,
+    "interest_source": "CF",
+    "operating_income_krw": 998031000000,
+    "revenue_krw": 14372626000000,
+    "depreciation_krw": 2134052000000,
+    "amortization_krw": 437184000000,
+    "interest_expense_krw": 242592000000,
+    "net_debt_to_ebitda": null,
+    "ebitda_interest_coverage": 14.71,
+    "ebitda_margin_pct": 24.83,
+    "debt_ratio_pct": 129.54,
+    "audit_opinion_raw": [
+     "적정"
+    ]
+   },
+   "2024FY": {
+    "fs_rcept_no": "20250317000701",
+    "total_borrowings_krw": 7170860000000,
+    "total_borrowings_note": "리스부채 출처: 리스 주석",
+    "net_debt_krw": 6205537000000,
+    "ebitda_krw": 3526895000000,
+    "ebitda_note": null,
+    "net_debt_missing_reason": null,
+    "coverage_missing_reason": null,
+    "interest_source": "CF",
+    "operating_income_krw": 863130000000,
+    "revenue_krw": 14625198000000,
+    "depreciation_krw": 2180127000000,
+    "amortization_krw": 483638000000,
+    "interest_expense_krw": 275526000000,
+    "net_debt_to_ebitda": 1.76,
+    "ebitda_interest_coverage": 12.8,
+    "ebitda_margin_pct": 24.12,
+    "debt_ratio_pct": 124.76,
+    "audit_opinion_raw": [
+     "적정의견"
+    ]
+   },
+   "2025FY": {
+    "fs_rcept_no": "20260313000442",
+    "total_borrowings_krw": 7036916000000,
+    "total_borrowings_note": "리스부채 출처: 리스 주석",
+    "net_debt_krw": 6146550000000,
+    "ebitda_krw": 3589179000000,
+    "ebitda_note": null,
+    "net_debt_missing_reason": null,
+    "coverage_missing_reason": null,
+    "interest_source": "CF",
+    "operating_income_krw": 892131000000,
+    "revenue_krw": 15451745000000,
+    "depreciation_krw": 2209841000000,
+    "amortization_krw": 487207000000,
+    "interest_expense_krw": 260506000000,
+    "net_debt_to_ebitda": 1.71,
+    "ebitda_interest_coverage": 13.78,
+    "ebitda_margin_pct": 23.23,
+    "debt_ratio_pct": 117.06,
+    "audit_opinion_raw": [
+     "적정의견"
+    ]
+   }
+  },
+  "tolerance": 0.01,
+  "fs_basis": "CFS"
+ },
+ "check_list": [
+  {
+   "rcept_no": "20260313000442",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260313000442",
+   "where": "2025 사업보고서 재무제표·주석",
+   "values": [
+    "영업이익 8921.3억, 매출액 154517.5억",
+    "감가상각비(사용권 포함) 22098.4억, 무형자산상각비 4872.1억 (비용의 성격별 분류·영업에서 창출된 현금)",
+    "총차입금 70369.2억 (차입·사채·리스부채 행 합)",
+    "현금 7943.2억, 단기금융상품 960.5억",
+    "이자비용 2605.1억 (출처 CF)",
+    "감사의견 적정의견"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified",
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20250317000701",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250317000701",
+   "where": "2024 사업보고서",
+   "values": [
+    "영업이익 8631.3억, 매출액 146252.0억",
+    "감가상각비 21801.3억, 무형자산상각비 4836.4억",
+    "차입 계정 상태: 리스부채 출처: 리스 주석",
+    "이자비용 2755.3억 (출처 CF)"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "verification_method": [
+    "document",
+    "document",
+    "api_response",
+    "document"
+   ],
+   "status": "draft"
+  },
+  {
+   "rcept_no": "20240313001130",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20240313001130",
+   "where": "2023 사업보고서",
+   "values": [
+    "영업이익 9980.3억, 매출액 143726.3억",
+    "EBITDA 상태: 35692.7",
+    "차입 계정 상태: 미분류 차입 계정: 단기차입금"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "verification_method": [
+    "document",
+    "document",
+    "api_response"
+   ],
+   "status": "draft"
+  }
+ ],
+ "open_notes": [
+  "주 케이스. 2025·2024 핵심 지표 3개 모두 산출",
+  "2023 순차입금은 단기차입금이 표준코드 미사용이라 missing, 순차입금/EBITDA도 missing",
+  "2023 감사의견 행은 (당기)가 아니라 (주1) 표기"
+ ]
+}

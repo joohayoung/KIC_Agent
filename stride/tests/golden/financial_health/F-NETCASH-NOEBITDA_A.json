@@ -1,0 +1,88 @@
+{
+ "case_type": "F-NETCASH-NOEBITDA",
+ "sample": "A",
+ "corp_code": "00877059",
+ "corp_name": "삼성바이오로직스",
+ "status": "ai_verified",
+ "request": {
+  "mode": "single",
+  "company": "00877059",
+  "as_of": "2026-11-05"
+ },
+ "verified_by": "AI 검수(claude.ai)",
+ "verified_at": "2026-11-05",
+ "human_verified": {
+  "verified": false,
+  "by": null,
+  "at": null
+ },
+ "expect": {
+  "period": "2025FY",
+  "fs_rcept_no": "20260515001658",
+  "total_borrowings_krw": 927094458885,
+  "cash_krw": 148851266520,
+  "short_term_krw": 1307174500000,
+  "fin.net_debt_krw": -528931307635,
+  "net_debt_sign": "negative",
+  "fin.ebitda": "missing",
+  "ebitda_note": "상각비 출처 불일치",
+  "fin.net_debt_to_ebitda": "missing",
+  "fin.ebitda_margin": "missing",
+  "fin.ebitda_interest_coverage": "missing",
+  "interest_note": "이자비용 확인 불가: 표끼리 값 다름",
+  "interest_missing_test": true
+ },
+ "check_list": [
+  {
+   "rcept_no": "20260515001658",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260515001658",
+   "where": "2025 사업보고서 정정본 재무상태표",
+   "values": [
+    "현금 148,851,266,520",
+    "단기금융상품 1,307,174,500,000",
+    "총차입금 927,094,458,885 (리스부채 포함)"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260515001658",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260515001658",
+   "where": "비용의 성격별 분류 / 영업에서 창출된 현금",
+   "values": [
+    "N 감가+무형 합산 3,597.3억",
+    "C 감가 3,573.0억, 무형 2,651.1억, 사용권 112.3억",
+    "두 출처가 정말 다른지"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260515001658",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260515001658",
+   "where": "금융원가 표 / 현금흐름 조정 표",
+   "values": [
+    "이자비용(금융원가) 291.7억",
+    "이자비용에 대한 조정 377.0억",
+    "두 값의 차이"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  }
+ ],
+ "open_notes": [
+  "순차입금은 음수지만 EBITDA missing이라 순차입금/EBITDA는 missing이어야 한다. 0·음수로 채우면 실패"
+ ]
+}

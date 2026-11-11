@@ -1,0 +1,186 @@
+{
+ "case_type": "G-POS",
+ "sample": "보조",
+ "corp_code": "00114093",
+ "corp_name": "덕성",
+ "status": "ai_verified",
+ "request": {
+  "mode": "single",
+  "company": "00114093",
+  "as_of": "2026-11-05"
+ },
+ "verified_by": "AI 검수(claude.ai)",
+ "verified_at": "2026-11-06",
+ "human_verified": {
+  "verified": false,
+  "by": null,
+  "at": null
+ },
+ "expect": {
+  "in_scope": true,
+  "signal_status": "해외 투자 확정",
+  "must_have_signals": [
+   {
+    "signal_type": "S4_confirmed",
+    "rcept_no": "20260828800858",
+    "original_rcept_no": "20251106800211",
+    "is_overseas": true,
+    "purpose_category": "growth_investment",
+    "target_country": "인도네시아",
+    "overseas_amount_krw": 13842144000
+   },
+   {
+    "signal_type": "S4_confirmed",
+    "rcept_no": "20260909800257",
+    "is_overseas": true,
+    "purpose_category": "growth_investment",
+    "target_country": "인도네시아",
+    "overseas_amount_krw": 6849000000,
+    "part_of_earlier": "no"
+   },
+   {
+    "signal_type": "S4_confirmed",
+    "rcept_no": "20260909800257",
+    "signal_suffix": ":fdpp_op",
+    "is_overseas": true,
+    "purpose_category": "working_capital",
+    "target_country": "인도네시아",
+    "overseas_amount_krw": 3805000000
+   }
+  ],
+  "no_signal": [
+   {
+    "rcept_no": "20260909800251",
+    "rule": "R1 종속회사 유상증자"
+   }
+  ],
+  "project_count_for_target": 1,
+  "merge_rule": "7.8: 회사명 칸 공백 제거 후 일치(정정본 기준), 이사회 2025-11-06 / 2026-09-09, 취득주식 159,840 + 140,000 = 취득 후 299,840",
+  "financial_base": {
+   "rcept_no": "20260814002778",
+   "period": "2026H1"
+  },
+  "cash_krw": 7385759139,
+  "short_term_krw": 19280647011,
+  "ttm_ocf_krw": 9577387973,
+  "confirmed_funding_krw": 0,
+  "unconfirmed_funding_krw": 0,
+  "available_funds_krw": 36243794123,
+  "overseas_investment_krw": 20691144000,
+  "funding_gap_krw": -15552650123,
+  "funding_gap_ratio": -0.7517,
+  "funding_gap_sign": "negative_or_zero",
+  "investment_notes": [
+   {
+    "rcept_no": "20260828800858",
+    "excluded": false,
+    "scheduled_date": "2026-08-28",
+    "note": "연결 내부 출자, 집행 시점 확인 불가"
+   },
+   {
+    "rcept_no": "20260909800257",
+    "excluded": false,
+    "scheduled_date": "2027-03-31",
+    "note": "연결 내부 출자, 집행 시점 확인 불가"
+   }
+  ],
+  "must_not_have_after": "2026-11-05",
+  "overseas_subsidiary_working_capital_krw": 3805000000,
+  "liquidity_draft": {
+   "investment_within_24m_krw": 20691144000,
+   "investment_beyond_24m_krw": 0,
+   "maturing_debt_1y_krw": 25674382010,
+   "dividends_paid_last_fy_krw": 1536304000,
+   "liquidity_uses_krw": 47901830010,
+   "liquidity_surplus_krw": -11658035887,
+   "liquidity_sources_to_uses": 0.756626502900489,
+   "status": "draft",
+   "note": "draft 2026-11-10: 방향 수정 지표. 이미 검수한 구성(현금·단기금융상품·TTM·확정 조달·투자액)에 새로 읽은 만기 차입금·배당금·예정일을 더한 값. 만기 차입금·배당금은 원문 대조 전이라 사람 검수 필요"
+  }
+ },
+ "check_list": [
+  {
+   "rcept_no": "20251106800211",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20251106800211",
+   "where": "타법인 취득결정 원공시",
+   "values": [
+    "PT. DUKSUNG ECOTECH INDONESIA (가칭), 국적 인도네시아",
+    "취득금액 13,842,144,000",
+    "취득목적 '합성피혁 사업부문의 해외사업 진출'"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260828800858",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260828800858",
+   "where": "정정 (취득예정일자 확정)",
+   "values": [
+    "회사명 (가칭) 삭제",
+    "회사와 관계 자회사",
+    "취득주식수 159,840, 취득예정일자 2026-08-28"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260909800257",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260909800257",
+   "where": "타법인 취득결정 (추가 출자)",
+   "values": [
+    "취득금액 10,654,000,000, 취득주식수 140,000",
+    "취득 후 소유 299,840주 (별도 출자인지)",
+    "취득목적 '합성피혁 제조시설 투자'",
+    "최종 분할납입 2027-03-31"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260814002778",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814002778",
+   "where": "2026 반기보고서",
+   "values": [
+    "현금및현금성자산 7,385,759,139",
+    "단기금융상품 19,280,647,011",
+    "반기 누적 영업현금흐름 4,012,218,636, 전년 동기 -4,486,493,199"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260318000948",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260318000948",
+   "where": "2025 사업보고서 현금흐름표",
+   "values": [
+    "연간 영업현금흐름 1,078,676,138"
+   ],
+   "value_status": [
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  }
+ ],
+ "open_notes": [
+  "후보 파일의 '가칭 때문에 합산 불명확 예상'은 틀렸다. 7.5는 정정본(최신본) 칸을 쓰므로 회사명이 일치한다",
+  "교환사채 20250922000203·발행결과 20250930800828은 8.1.4 DS005 대상과 11.2 조달 종류(유상증자·CB·BW)에 없어 S5가 아니다. 납입 2025-09-30도 재무 기준일 이전이다",
+  "2026-11-06 결정: 증자 칸 분할에서 투자액은 시설 칸만. 추가 출자 106.54억 = 시설 68.49억(투자액) + 운영 38.05억(해외 법인 운영자금 필드). 재계산 투자액 206.91억. 입력 값(check_list)과 검수 상태는 그대로다"
+ ]
+}

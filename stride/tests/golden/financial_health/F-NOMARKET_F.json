@@ -1,0 +1,39 @@
+{
+ "case_type": "F-NOMARKET",
+ "sample": "F",
+ "corp_code": "00220613",
+ "corp_name": "넥스틸",
+ "status": "ai_verified",
+ "request": {
+  "mode": "single",
+  "company": "00220613",
+  "as_of": "2026-11-05",
+  "env": "시장 데이터 키를 비운 상태로 실행"
+ },
+ "verified_by": "F-NORMAL_F 상태를 따름",
+ "verified_at": "2026-11-06",
+ "human_verified": {
+  "verified": false,
+  "by": null,
+  "at": null
+ },
+ "expect": {
+  "fin.market_data_source": "missing",
+  "missing_metrics": [
+   "fin.market_cap",
+   "fin.net_debt_to_ev",
+   "fin.per",
+   "fin.pbr",
+   "fin.ev_to_ebitda"
+  ],
+  "result_status": "complete",
+  "other_metrics_same_as": "F-NORMAL_F 2025FY",
+  "fin.net_debt_to_ebitda_2025FY": 1.76,
+  "fin.ebitda_interest_coverage_2025FY": 15.51,
+  "fin.ebitda_margin_pct_2025FY": 10.08
+ },
+ "check_list": [],
+ "open_notes": [
+  "확인할 공시 없음. 원문 값은 F-NORMAL_F 검수를 따른다"
+ ]
+}

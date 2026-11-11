@@ -1,0 +1,87 @@
+{
+ "case_type": "G-MIX",
+ "sample": "D",
+ "corp_code": "00474588",
+ "corp_name": "한중엔시에스",
+ "status": "ai_verified",
+ "request": {
+  "mode": "single",
+  "company": "00474588",
+  "as_of": "2026-08-22"
+ },
+ "verified_by": "AI 검수(claude.ai)",
+ "verified_at": "2026-11-05",
+ "human_verified": {
+  "verified": false,
+  "by": null,
+  "at": null
+ },
+ "expect": {
+  "must_have_signals": [
+   {
+    "signal_type": "S5_funding",
+    "rcept_no": "20250903000379",
+    "fund_use_scopes": {
+     "fdpp_ocsa": "overseas",
+     "fdpp_fclt": "unknown"
+    },
+    "overseas_amount_krw": 11999903912,
+    "open_question": "해외 용도 불명 칸: fdpp_fclt 3,000,000,000"
+   },
+   {
+    "signal_type": "S5_funding",
+    "rcept_no": "20260813001787",
+    "fund_use_scopes": {
+     "fdpp_ocsa": "overseas",
+     "fdpp_op": "unknown"
+    },
+    "overseas_amount_krw": 60000000000,
+    "open_question": "해외 용도 불명 칸: fdpp_op 20,000,000,000"
+   }
+  ],
+  "reference_domestic_slot": {
+   "case": "G-RICH_F",
+   "rcept_no": "20260629000433",
+   "fund_use_scopes": {
+    "fdpp_fclt": "domestic",
+    "fdpp_etc": "unknown"
+   },
+   "s5_amount_krw": null
+  },
+  "must_not_have_after": "2026-08-22"
+ },
+ "check_list": [
+  {
+   "rcept_no": "20250903000379",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250903000379",
+   "where": "2025 유상증자 결정 【조달자금의 구체적 사용 목적】",
+   "values": [
+    "시설 30억 세부 'ESS 생산설비 구축', 소재지 표기 없음",
+    "타법인 120억 대상 Hanjung America Co."
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260813001787",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260813001787",
+   "where": "2026 CB 결정 정정본 【조달자금의 구체적 사용 목적】",
+   "values": [
+    "운영 200억 '생산물량 대응을 위한 운영자금', 국내·해외 표기 없음",
+    "타법인 600억 '미국 에너지저장장치 제조시설 구축'"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  }
+ ],
+ "open_notes": [
+  "부분 후보. 이 두 공시는 해외 칸 + 불명 칸이고, 국내와 해외가 모두 명시된 공시가 아니다. 칸 단위 분리와 open_question은 시험하지만 G-MIX 본래 조건은 후보 탐색이 더 필요",
+  "라벨 기대값은 scripts/probe_excerpt_label.py 수정 발췌 결과와 AI 추가 검수가 같다"
+ ]
+}

@@ -1,0 +1,200 @@
+{
+ "case_type": "G-POS_HALTED",
+ "sample": "1",
+ "corp_code": "00268118",
+ "corp_name": "코맥스",
+ "status": "draft",
+ "request": {
+  "mode": "single",
+  "company": "00268118",
+  "as_of": "2026-11-05"
+ },
+ "verified_by": null,
+ "verified_at": null,
+ "human_verified": {
+  "verified": false,
+  "by": null,
+  "at": null
+ },
+ "expect": {
+  "in_scope": true,
+  "signal_status": "해외 투자 확정",
+  "must_have_signals": [
+   {
+    "signal_type": "S4_confirmed",
+    "rcept_no": "20260828900607",
+    "is_overseas": true,
+    "purpose_category": "growth_investment",
+    "target_country": "캐나다",
+    "overseas_amount_krw": 5388498000
+   }
+  ],
+  "no_signal": [
+   {
+    "rcept_no": "20260428000673",
+    "rule": "회사합병결정은 8.1.4 DS005 대상 아님"
+   }
+  ],
+  "funding_notes": [
+   {
+    "rcept_no": "20260128000145",
+    "first_rcept_no": "20251216000526",
+    "amount_krw": 19999999791,
+    "final": "확정·현금 반영",
+    "pay": "2026-02-05",
+    "purpose_category": "working_capital",
+    "rule": "R3 운영자금뿐, 재무 기준일 이전 납입"
+   }
+  ],
+  "open_questions": [],
+  "financial_base": {
+   "rcept_no": "20260814004293",
+   "period": "2026H1"
+  },
+  "cash_krw": 5787907490,
+  "short_term_krw": 0,
+  "ttm_ocf_krw": -22409046762,
+  "confirmed_funding_krw": 0,
+  "unconfirmed_funding_krw": 0,
+  "available_funds_krw": -16621139272,
+  "overseas_investment_krw": 5388498000,
+  "funding_gap_krw": 22009637272,
+  "funding_gap_ratio": 4.0846,
+  "funding_gap_sign": "positive",
+  "investment_notes": [
+   {
+    "rcept_no": "20260828900607",
+    "excluded": false,
+    "scheduled_date": "2026-09-02",
+    "note": "집행 예정일 2026-09-02, 완료 미확인"
+   }
+  ],
+  "must_not_have_after": "2026-11-05",
+  "liquidity_draft": {
+   "investment_within_24m_krw": 5388498000,
+   "investment_beyond_24m_krw": 0,
+   "maturing_debt_1y_krw": 29036464300,
+   "dividends_paid_last_fy_krw": 0,
+   "liquidity_uses_krw": 34424962300,
+   "liquidity_surplus_krw": -51046101572,
+   "liquidity_sources_to_uses": -0.48282229410023203,
+   "status": "draft",
+   "note": "draft 2026-11-10: 방향 수정 지표. 이미 검수한 구성(현금·단기금융상품·TTM·확정 조달·투자액)에 새로 읽은 만기 차입금·배당금·예정일을 더한 값. 만기 차입금·배당금은 원문 대조 전이라 사람 검수 필요"
+  }
+ },
+ "check_list": [
+  {
+   "rcept_no": "20260828900607",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260828900607",
+   "where": "타법인 취득결정",
+   "values": [
+    "NaviComm Inc. (Canada), 회사와 관계 '관계회사'",
+    "취득금액 5,388,498,000, 취득주식 5,400,000",
+    "취득 후 지분 40%, 현금취득(신주취득)",
+    "취득목적 '글로벌 판로 다각화', 주요사업 '전자제품 유통'",
+    "취득예정일자 2026-09-02, 이사회 2026-08-28",
+    "정정 공시 없음 (as_of까지)"
+   ],
+   "value_status": [
+    "draft",
+    "draft",
+    "draft",
+    "draft",
+    "draft",
+    "draft"
+   ],
+   "status": "draft"
+  },
+  {
+   "rcept_no": "20260128000145",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260128000145",
+   "where": "유상증자결정 정정본 (최초 20251216000526)",
+   "values": [
+    "운영자금 19,999,999,791, 다른 칸 전부 '-'",
+    "제3자배정, 납입일 2026-02-05"
+   ],
+   "value_status": [
+    "draft",
+    "draft"
+   ],
+   "status": "draft"
+  },
+  {
+   "rcept_no": "20260205900843",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260205900843",
+   "where": "증권발행결과",
+   "values": [
+    "실제발행금액 19,999,999,791, 납입일 2026-02-05"
+   ],
+   "value_status": [
+    "draft"
+   ],
+   "status": "draft"
+  },
+  {
+   "rcept_no": "20260814004293",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814004293",
+   "where": "2026 반기보고서(기재정정) 연결",
+   "values": [
+    "현금및현금성자산 5,787,907,490",
+    "단기금융상품 행 없음 → 0 (3장 규칙)",
+    "반기 누적 영업현금흐름 -18,822,993,944, 전년 동기 -557,174,461"
+   ],
+   "value_status": [
+    "draft",
+    "draft",
+    "draft"
+   ],
+   "status": "draft"
+  },
+  {
+   "rcept_no": "20260320001378",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260320001378",
+   "where": "2025 사업보고서 연결 현금흐름표",
+   "values": [
+    "연간 영업현금흐름 -4,143,227,279 (TTM -22,409,046,762 계산 입력)"
+   ],
+   "value_status": [
+    "draft"
+   ],
+   "status": "draft"
+  },
+  {
+   "rcept_no": "20260824900688",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260824900688",
+   "where": "주권매매거래정지 기간변경",
+   "values": [
+    "정지 시작 2024-03-21, 변경 사유 개선기간 부여",
+    "변경 후 개선기간 종료('27.03.24) 후 상장폐지 여부 결정일까지"
+   ],
+   "value_status": [
+    "draft",
+    "draft"
+   ],
+   "status": "draft"
+  },
+  {
+   "rcept_no": "20260428000673",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260428000673",
+   "where": "회사합병결정",
+   "values": [
+    "상대 코맥스씨에스, 100% 자회사, 무증자 소규모합병",
+    "합병기일 2026-07-01 (20260702000417), 재무 기준일 이후"
+   ],
+   "value_status": [
+    "draft",
+    "draft"
+   ],
+   "status": "draft"
+  }
+ ],
+ "open_notes": [
+  "2026-11-06 결정: 거래정지 중 기업 사례. 주 후보에서 내렸다. 초안 값은 그대로이고 사람 검수 전이다",
+  "자금 공백 220.1억 중 투자액은 53.9억이고 나머지는 TTM 영업현금흐름 -224.1억에서 온다. 공백 비율이 4.08로 1을 넘는다",
+  "2026 상반기 영업현금흐름 -188.2억은 전년 동기 -5.6억과 차이가 크다. 원인은 확인하지 않았다",
+  "purpose_category growth_investment는 사람 확인이 필요하다. 근거: 신설 판매법인에 40% 출자, 취득목적 '글로벌 판로 다각화'. 공장 등 설비 투자는 아니다",
+  "상대 NaviComm의 최대주주 Navien Canada, 회사 최대주주 경동나비엔이 관계회사로 기재되어 있고 '당사와 함께 출자 예정인 각 회사'가 있다. 계열 거래다",
+  "주권매매거래정지 기간변경 공시(20260824900688): 정지 시작 2024-03-21, 변경 사유 개선기간 부여, 정지 기간 '개선기간 종료('27.03.24) 후 상장폐지 여부 결정일까지'. as_of에 거래정지·상장폐지 심사 중이라 주 후보로 적절한지 사용자 판단이 필요하다. 7.9 G1은 상장 여부만 본다",
+  "반기보고서에 NaviComm 언급 없음 (재무 기준일 뒤 공시)"
+ ]
+}

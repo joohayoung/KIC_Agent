@@ -1,0 +1,197 @@
+{
+ "case_type": "G-POS_MIXED",
+ "sample": "1",
+ "corp_code": "00202060",
+ "corp_name": "구영테크",
+ "status": "ai_verified",
+ "request": {
+  "mode": "single",
+  "company": "00202060",
+  "as_of": "2026-11-05"
+ },
+ "verified_by": "AI 검수(claude.ai)",
+ "verified_at": "2026-11-06",
+ "human_verified": {
+  "verified": false,
+  "by": null,
+  "at": null
+ },
+ "expect": {
+  "in_scope": true,
+  "signal_status": "해외 투자 확정",
+  "must_have_signals": [
+   {
+    "signal_type": "S4_confirmed",
+    "rcept_no": "20260413900715",
+    "is_overseas": true,
+    "purpose_category": "growth_investment",
+    "target_country": "미국",
+    "overseas_amount_krw": 14798000000
+   },
+   {
+    "signal_type": "S4_confirmed",
+    "rcept_no": "20260413900715",
+    "signal_suffix": ":fdpp_dtrp",
+    "is_overseas": true,
+    "purpose_category": "refinancing",
+    "target_country": "미국",
+    "overseas_amount_krw": 14798000000
+   }
+  ],
+  "no_signal": [
+   {
+    "rcept_no": "20260413900717",
+    "rule": "R1 종속회사 유상증자"
+   }
+  ],
+  "open_questions": [
+   "종속회사 증자 채무상환 용도 14,798,000,000: refinancing, 투자액에서 제외"
+  ],
+  "financial_base": {
+   "rcept_no": "20260814002687",
+   "period": "2026H1"
+  },
+  "cash_krw": 21756460918,
+  "short_term_krw": 0,
+  "ttm_ocf_krw": -6226632014,
+  "confirmed_funding_krw": 0,
+  "unconfirmed_funding_krw": 0,
+  "available_funds_krw": 15529828904,
+  "overseas_investment_krw": 14798000000,
+  "funding_gap_krw": -731828904,
+  "funding_gap_ratio": -0.0495,
+  "funding_gap_sign": "negative_or_zero",
+  "investment_notes": [
+   {
+    "rcept_no": "20260413900715",
+    "excluded": false,
+    "scheduled_date": "2026-04-22",
+    "note": "연결 내부 출자, 집행 시점 확인 불가"
+   },
+   {
+    "rcept_no": "20250825900496",
+    "latest_version": "20251215901187",
+    "amount_krw": 6797368634,
+    "confirmed_execution_date": "2025-10-31",
+    "date_source_rcept_no": "20260814002687",
+    "date_quote": "CAR TECH의 지분은 2025.10.31일자로 취득 완료",
+    "excluded": true,
+    "note": "제3자 거래, 재무 기준일 이전 취득 완료 (7.10 4a). 합산 판정 전에 빠진다"
+   }
+  ],
+  "must_not_have_after": "2026-11-05",
+  "liquidity_draft": {
+   "investment_within_24m_krw": 14798000000,
+   "investment_beyond_24m_krw": 0,
+   "maturing_debt_1y_krw": 163374935074,
+   "dividends_paid_last_fy_krw": 1565016960,
+   "liquidity_uses_krw": 179737952034,
+   "liquidity_surplus_krw": -164208123130,
+   "liquidity_sources_to_uses": 0.0864026140737506,
+   "status": "draft",
+   "note": "draft 2026-11-10: 방향 수정 지표. 이미 검수한 구성(현금·단기금융상품·TTM·확정 조달·투자액)에 새로 읽은 만기 차입금·배당금·예정일을 더한 값. 만기 차입금·배당금은 원문 대조 전이라 사람 검수 필요"
+  }
+ },
+ "check_list": [
+  {
+   "rcept_no": "20260413900715",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260413900715",
+   "where": "타법인 취득결정",
+   "values": [
+    "CAR TECH, LLC(USA), 회사와 관계 종속회사",
+    "취득금액 29,596,000,000 (USD 20,000,000)",
+    "취득목적 '종속기업의 재무구조개선 및 시설투자자금 확보'",
+    "결손 보전 표현이 없는지",
+    "송금 예정 2026-04-13, 2026-04-22"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260413900717",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260413900717",
+   "where": "유상증자결정 (종속회사)",
+   "values": [
+    "시설자금 14,798,000,000",
+    "채무상환자금 14,798,000,000",
+    "결손 보전 칸·표현이 없는지"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20250825900496",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250825900496",
+   "where": "2025 취득결정 원공시 (같은 대상)",
+   "values": [
+    "이사회 2025-08-25, 회사와 관계 '-'",
+    "취득목적 '사업 확대를 위한 기업인수'"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20251215901187",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20251215901187",
+   "where": "2025 취득결정 정정본",
+   "values": [
+    "취득금액 6,797,368,634",
+    "잔여 지분 18.39%를 2025.10.31.자로 취득 완료 문장"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260814002687",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814002687",
+   "where": "2026 반기보고서",
+   "values": [
+    "현금및현금성자산 21,756,460,918",
+    "단기금융상품 행 0 (재무상태표)",
+    "반기 누적 영업현금흐름 3,477,392,998, 전년 동기 36,130,165,203",
+    "주석 30 'CAR TECH의 지분은 2025.10.31일자로 취득 완료'"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260316001359",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260316001359",
+   "where": "2025 사업보고서 현금흐름표",
+   "values": [
+    "연간 영업현금흐름 26,426,140,191 (TTM -6,226,632,014 계산 입력)"
+   ],
+   "value_status": [
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  }
+ ],
+ "open_notes": [
+  "2026-11-06 결정: 성장 투자와 차입 상환이 섞인 출자 사례. 증자 공시 칸으로 나눠 시설 147.98억만 투자액, 채무상환 147.98억은 refinancing. 재계산 공백은 음수라 G-POS 주 후보에서 내렸다. 입력 값(check_list)은 그대로이고 검수 상태도 유지한다",
+  "2025 취득 완료일 문장은 7.10 4a 정규식 예시에 없던 형식이라 해외 v0.13에서 형식을 추가했다",
+  "유형자산 취득(종속) GUYOUNGTECH USA 398.3억의 원공시 2024-09-06은 lookback 24개월 밖이라 대상이 아니다",
+  "결손 보전 여부: 두 공시와 반기보고서 어디에도 결손 보전 표현이 없다. CAR TECH 2025년 자본총계 69.3억 / 자본금 431.8억, 부채 2,350.4억"
+ ]
+}

@@ -1,0 +1,219 @@
+{
+ "case_type": "G-GOV",
+ "sample": "I",
+ "corp_code": "00800084",
+ "corp_name": "씨엑스아이",
+ "status": "ai_verified",
+ "request": {
+  "mode": "single",
+  "company": "00800084",
+  "as_of": "2026-09-30"
+ },
+ "verified_by": "AI 검수(claude.ai)",
+ "verified_at": "2026-11-05",
+ "review_source": "_review_batch1_검수결과.md (AI 검수, 사람 확인 아님)",
+ "human_verified": {
+  "verified": false,
+  "by": null,
+  "at": null
+ },
+ "expect": {
+  "must_have_signals": [
+   {
+    "signal_type": "S4_confirmed",
+    "rcept_no": "20260819000245",
+    "original_rcept_no": "20260715000544",
+    "original_rcept_dt": "20260716",
+    "is_overseas": true,
+    "purpose_category": "governance_restructuring",
+    "target_country": "중국",
+    "counted_as_new_investment": false
+   }
+  ],
+  "must_not_have_rcept_no": [
+   "20261013000370",
+   "20261019000188",
+   "20261022000428"
+  ],
+  "in_scope": true,
+  "financial_base": {
+   "rcept_no": "20260601001840",
+   "period": "2026.03",
+   "base_date": "2026-03-31"
+  },
+  "overseas_investment_krw": 0,
+  "overseas_investment_note": "확정 집행 완료분 제외",
+  "funding_gap": "missing (가용 자금이 비원화로 missing)",
+  "funding_gap_ratio": "None (투자액 0)",
+  "governance_note": "양수금액 칸 3,131.5억은 외부평가(DCF) 최소값 1,423,879,000CNY × 219.93원/CNY 환산이고 무상양수도라 현금 유출 없음. 정정사유: 등기완료로 양수일 2026-08-31 → 2026-08-19",
+  "must_not_have_after": "2026-09-30",
+  "in_scope_source": "지배구조 공시가 아니라 종속회사 집행 S4 3건(윈난성 토지 사용권)으로 범위 안. 지배구조 건은 프로젝트 금액에 들어가지 않음",
+  "subsidiary_execution": [
+   {
+    "rcept_no": "20251119900449",
+    "amount_krw": 61853532750,
+    "completed_by_correction": "20251128900729",
+    "confirmed_execution_date": "2025-11-28",
+    "excluded": true
+   },
+   {
+    "rcept_no": "20251119900452",
+    "amount_krw": 66855641400,
+    "completed_by_correction": "20251223900551",
+    "confirmed_execution_date": "2025-12-23",
+    "excluded": true
+   },
+   {
+    "rcept_no": "20260316902240",
+    "amount_krw": 85905287100,
+    "completed_by_correction": "20260330901340",
+    "confirmed_execution_date": "2026-03-30",
+    "excluded": true
+   }
+  ],
+  "liquidity_draft": {
+   "investment_within_24m_krw": 0,
+   "investment_beyond_24m_krw": 0,
+   "maturing_debt_1y_krw": null,
+   "dividends_paid_last_fy_krw": null,
+   "liquidity_uses_krw": null,
+   "liquidity_surplus_krw": null,
+   "liquidity_sources_to_uses": null,
+   "status": "draft",
+   "note": "draft 2026-11-10: 방향 수정 지표. 이미 검수한 구성(현금·단기금융상품·TTM·확정 조달·투자액)에 새로 읽은 만기 차입금·배당금·예정일을 더한 값. 만기 차입금·배당금은 원문 대조 전이라 사람 검수 필요"
+  }
+ },
+ "check_list": [
+  {
+   "rcept_no": "20260819000245",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260819000245",
+   "where": "타법인 양수결정 정정본",
+   "values": [
+    "대상 복건영생활력생물공정유한공사, 국적 중국",
+    "회사와 관계 자회사",
+    "거래상대방 절강정성건강과기집단유한회사, 관계 자회사",
+    "거래대금: 무상양수도",
+    "양수금액 칸 3,131.5억은 외부평가 최소값 환산, 현금 유출 없음",
+    "취득 후 지분율 100%",
+    "취득목적: 지배구조 재편"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified",
+    "ai_verified",
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260715000544",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260715000544",
+   "where": "같은 건 원공시",
+   "values": [
+    "같은 거래, 원문 작성일 2026-07-15",
+    "list.json 접수일 2026-07-16 (원문에 없는 값, 시점 판정 테스트용)"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified"
+   ],
+   "verification_method": [
+    "document",
+    "api_response"
+   ],
+   "status": "draft"
+  },
+  {
+   "rcept_no": "20251119900449",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20251119900449",
+   "where": "유형자산 취득결정 (종속회사) 1",
+   "values": [
+    "윈난성 토지 사용권 618.5억, 차 재배단지"
+   ],
+   "value_status": [
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20251119900452",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20251119900452",
+   "where": "유형자산 취득결정 (종속회사) 2",
+   "values": [
+    "윈난성 토지 사용권 668.6억"
+   ],
+   "value_status": [
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260316902240",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260316902240",
+   "where": "유형자산 취득결정 (종속회사) 3",
+   "values": [
+    "윈난성 토지 사용권 859.1억"
+   ],
+   "value_status": [
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260330901340",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260330901340",
+   "where": "취득완료 정정",
+   "values": [
+    "완료일 2026-03-30"
+   ],
+   "value_status": [
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20251128900729",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20251128900729",
+   "where": "취득완료 정정",
+   "values": [
+    "완료일 2025-11-28 (검수 파일에 없음)"
+   ],
+   "value_status": [
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20251223900551",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20251223900551",
+   "where": "취득완료 정정",
+   "values": [
+    "완료일 2025-12-23 (검수 파일에 없음)"
+   ],
+   "value_status": [
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260601001840",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260601001840",
+   "where": "2026.03 분기보고서",
+   "values": [
+    "as_of 2026-09-30의 재무 기준 보고서 (검수 파일에 없음)"
+   ],
+   "value_status": [
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  }
+ ],
+ "open_notes": [
+  "as_of를 2026-09-30으로 둔 이유: 2026-10-13 별도 신규 인수(케이만, 606.1억)가 있어 그 이후는 G-GOV 단독 시험이 안 됨",
+  "회사 자체가 중국 사업 위주라 '해외' 판정의 경계 사례. 소재지 문장이 지역명(윈난성)이고 국가명이 없어 라벨 판단 대상",
+  "토지 3건은 제3자 거래이고 취득완료 정정일이 모두 재무 기준일 2026-03-31 이전이라 전액 제외 (7.10 4a). 합산 판정 전에 빠진다"
+ ]
+}

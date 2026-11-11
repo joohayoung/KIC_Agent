@@ -1,0 +1,25 @@
+# 재무 사실 요약: {{ corp_name }} (기준일 {{ as_of }})
+{% if not has_company %}
+기업을 확정하지 못했습니다. {{ errors | join("; ") }}
+{% else %}
+## 기준 보고서
+{% for r in reports %}- {{ r.label }} (접수 {{ r.rcept_dt }}, 접수번호 {{ r.rcept_no }}){% if r.is_correction %} 정정본{% endif %}
+{% endfor %}
+## 핵심 지표
+{% for m in core %}- {{ m.name }} {{ m.period }}: {{ m.text }}{% if m.note %} ({{ m.note }}){% endif %}
+  산식 출처: {{ m.methodology }}
+{% endfor %}
+## 감사의견·자본잠식률·구조조정 공시
+{% for c in classes %}- {{ c.key }}: {{ c.value }}
+{% endfor %}{% for m in listing %}- {{ m.name }} {{ m.period }}: {{ m.text }}{% if m.note %} ({{ m.note }}){% endif %}
+{% endfor %}
+## 보조·시장 지표
+{% for m in aux %}- {{ m.name }} {{ m.period }}: {{ m.text }}{% if m.note %} ({{ m.note }}){% endif %}
+{% endfor %}
+## 실사 필요 항목
+{% for m in dd %}- {{ m.name }}
+{% endfor %}
+## 결측·주의
+{% for q in questions %}- {{ q }}
+{% else %}- 없음
+{% endfor %}{% endif %}

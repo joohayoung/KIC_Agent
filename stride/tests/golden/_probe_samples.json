@@ -1,0 +1,208 @@
+{
+ "_note": "1단계 API 확인 표본 (api_fields.md의 표본 A~H)과 골든 후보 제안. 정답지가 아니다(정답은 2단계에서 사람이 원공시로 확인). 실제 기업명·코드는 이 폴더에만 둔다.",
+ "checked_at": "2026-11-04",
+ "samples": {
+  "A": {
+   "corp_code": "00877059",
+   "corp_name": "삼성바이오로직스",
+   "market": "KOSPI",
+   "event": {
+    "rcept_no": "20261016000163",
+    "report_nm": "[기재정정]주요사항보고서(타법인주식및출자증권양수결정)",
+    "target": "PolyPeptide Group AG",
+    "iscmp_nt": "스위스",
+    "inhdtl_inhprc": 2706163546103
+   },
+   "funding": {
+    "rcept_no": "20261001000449",
+    "api": "piicDecsn",
+    "fdpp_ocsa": 2664980000000
+   }
+  },
+  "B": {
+   "corp_code": "00132868",
+   "corp_name": "우성머티리얼스",
+   "market": "KOSPI",
+   "event": {
+    "rcept_no": "20260930000504",
+    "report_nm": "[기재정정]주요사항보고서(타법인주식및출자증권양수결정)",
+    "original_rcept_no": "20260206001867",
+    "target": "제남황관잉크유한공사",
+    "iscmp_nt": "중국",
+    "inhdtl_inhprc": 11900000000
+   }
+  },
+  "C": {
+   "corp_code": "01194689",
+   "corp_name": "HD현대마린솔루션",
+   "market": "KOSPI",
+   "event": {
+    "rcept_no": "20261008000497",
+    "report_nm": "주요사항보고서(타법인주식및출자증권양수결정)",
+    "target": "Goltens New York Corp 외 1",
+    "iscmp_nt": "미국",
+    "inhdtl_inhprc": 331489452067
+   }
+  },
+  "D": {
+   "corp_code": "00474588",
+   "corp_name": "한중엔시에스",
+   "market": "KOSDAQ",
+   "size_2025FY_CFS": {
+    "assets": 253300000000,
+    "revenue": 175300000000
+   },
+   "events": [
+    {
+     "rcept_dt": "20251110",
+     "report_nm": "타법인주식및출자증권취득결정",
+     "target": "HANJUNG AMERICA CO.(미국)",
+     "amount": 29080000000,
+     "purpose": "종속회사 생산기반 확보를 위한 시설 및 운영자금"
+    },
+    {
+     "rcept_dt": "20260916",
+     "report_nm": "타법인주식및출자증권취득결정",
+     "target": "HANJUNG AMERICA CO.(미국)",
+     "amount": 15833610000
+    }
+   ],
+   "funding": [
+    {
+     "rcept_no": "20260813001787",
+     "api": "cvbdIsDecsn",
+     "fdpp_ocsa": 60000000000,
+     "fdpp_op": 20000000000
+    },
+    {
+     "rcept_no": "20250903000369",
+     "api": "cvbdIsDecsn",
+     "fdpp_ocsa": 15000000000
+    },
+    {
+     "rcept_no": "20250903000379",
+     "api": "piicDecsn",
+     "fdpp_fclt": 3000000000,
+     "fdpp_ocsa": 11999903912
+    }
+   ]
+  },
+  "E": {
+   "corp_code": "00642541",
+   "corp_name": "제이에스링크",
+   "market": "KOSDAQ",
+   "events": [
+    {
+     "rcept_dt": "20260325",
+     "report_nm": "타법인주식및출자증권취득결정",
+     "target": "(가칭) JS LINK MAGNETICS MALAYSIA (말레이시아)",
+     "amount": 50000000000
+    }
+   ],
+   "funding": [
+    {
+     "rcept_no": "20260721000350",
+     "api": "piicDecsn",
+     "fdpp_ocsa": 53392992000
+    }
+   ],
+   "overseas_review": {
+    "cash_reflected_ocsa_krw": 20000000000,
+    "unknown_fclt_krw": 67000000000,
+    "source": "사용 목적 절 2026-11-05, api_fields.md 26장"
+   }
+  },
+  "F": {
+   "corp_code": "00220613",
+   "corp_name": "넥스틸",
+   "market": "KOSPI",
+   "size_2025FY_CFS": {
+    "assets": 699300000000,
+    "revenue": 551000000000
+   },
+   "events": [
+    {
+     "rcept_dt": "20260722",
+     "report_nm": "타법인주식및출자증권취득결정",
+     "amount": 73780000000,
+     "purpose": "미국 현지 생산 및 유통 기반 확보"
+    }
+   ],
+   "funding": [
+    {
+     "rcept_no": "20260629000433",
+     "api": "cvbdIsDecsn",
+     "fdpp_fclt": 40000000000,
+     "overseas_review": {
+      "overseas_candidate_krw": 0,
+      "fdpp_fclt": "국내 (포항3공장)",
+      "fdpp_etc": "open_question",
+      "source": "AI 검수 2026-11-05"
+     }
+    }
+   ]
+  },
+  "G": {
+   "corp_code": "00231363",
+   "corp_name": "LG유플러스",
+   "market": "KOSPI",
+   "note": "해외 투자 공시 없음(최근 12개월 스캔), 국내 신규시설투자만, 외부 조달 DS005 0건(18개월)"
+  },
+  "H": {
+   "corp_code": "00190756",
+   "corp_name": "와이엔텍",
+   "market": "KOSDAQ",
+   "note": "해외 투자 공시 없음(최근 12개월), 국내 신규시설투자만, 외부 조달 없음. 사업의 내용 8.4 키워드 문단은 2025 사업보고서 16개·2026 반기 15개 있음(이전 기록 '0건'은 틀림, 2026-11-05 정정)"
+  },
+  "I": {
+   "corp_code": "00800084",
+   "corp_name": "씨엑스아이",
+   "market": "KOSDAQ",
+   "note": "G-GOV 후보. 6월 결산, 보고 통화 CNY (fnlttSinglAcntAll currency=CNY)",
+   "event": {
+    "rcept_no": "20260819000245",
+    "report_nm": "주요사항보고서(타법인주식및출자증권양수결정)",
+    "iscmp_rl_cmpn": "자회사"
+   }
+  }
+ },
+ "golden_proposals": {
+  "G-POS": [
+   {
+    "sample": null,
+    "reason": "2026-11-05 재탐색 대기. 조건: 최근 12개월 해외 투자 공시 + 확정 조달 없음 또는 자금 공백 > 0, 중견 후보 우선. D·F는 자금 공백이 음수로 계산되어 제외"
+   }
+  ],
+  "G-RICH": [
+   {
+    "sample": "F",
+    "reason": "2026-11-05 결정. C는 기타유동금융자산 행만 있어 자금 공백 missing"
+   }
+  ],
+  "G-GOV": [
+   {
+    "sample": "I",
+    "reason": "자회사 지분 무상양수 (iscmp_rl_cmpn=자회사). 비원화 보고라 재무 지표는 missing"
+   }
+  ],
+  "G-NONE": [
+   {
+    "sample": "H"
+   },
+   {
+    "sample": "G"
+   }
+  ],
+  "G-TRACK": [
+   {
+    "sample": "D"
+   }
+  ],
+  "G-MIX": [
+   {
+    "sample": "D",
+    "reason": "2025 유상증자 시설 30억 소재지 불명 → open_question, 타법인 120억 해외. 2026 CB 운영 200억 불명, 타법인 600억 해외. 국내·해외가 모두 명시된 공시는 아직 없음"
+   }
+  ]
+ }
+}

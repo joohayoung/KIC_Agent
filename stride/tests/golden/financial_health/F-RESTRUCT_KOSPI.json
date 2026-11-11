@@ -1,0 +1,100 @@
+{
+ "case_type": "F-RESTRUCT",
+ "sample": "KOSPI 후보",
+ "corp_code": "00203315",
+ "corp_name": "콘텐트리중앙",
+ "status": "ai_verified",
+ "request": {
+  "mode": "single",
+  "company": "00203315",
+  "as_of": "2026-07-01"
+ },
+ "verified_by": "AI 검수(claude.ai)",
+ "verified_at": "2026-11-05",
+ "human_verified": {
+  "verified": false,
+  "by": null,
+  "at": null
+ },
+ "expect": {
+  "fin.restructuring_status": "회생절차",
+  "note": null,
+  "events": [
+   {
+    "rcept_no": "20260615000002",
+    "report_nm_norm": "회생절차개시신청",
+    "kind": "회생절차"
+   },
+   {
+    "rcept_no": "20260630800563",
+    "report_nm_norm": "회생절차개시결정",
+    "kind": "회생절차"
+   }
+  ],
+  "corrected_same_event": [
+   "20260616000222"
+  ],
+  "excluded_subsidiary": [
+   "20260615800033",
+   "20260616800652",
+   "20260630800581"
+  ],
+  "must_not_have_after": "2026-07-01"
+ },
+ "check_list": [
+  {
+   "rcept_no": "20260615000002",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260615000002",
+   "where": "회생절차 개시신청",
+   "values": [
+    "신청인이 이 회사 자신",
+    "서울회생법원, 신청일 2026-06-14"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260616000222",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260616000222",
+   "where": "같은 건 정정",
+   "values": [
+    "정정사항이 재산보전처분·포괄적금지명령 결정 내용뿐인지"
+   ],
+   "value_status": [
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260630800563",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260630800563",
+   "where": "회생절차개시결정",
+   "values": [
+    "결정일 2026-06-30, 사건번호 2026회합1104"
+   ],
+   "value_status": [
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260615800033",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260615800033",
+   "where": "종속회사 회생절차개시신청 (제외 대상)",
+   "values": [
+    "다른 법인의 신청인지"
+   ],
+   "value_status": [
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  }
+ ],
+ "open_notes": [
+  "9.3 패턴은 정규화 이름 완전 일치. 정정은 같은 사건 1건으로 본다",
+  "2026-11-05까지 종결·폐지 공시 없음 (2024-07 이후 목록 확인)"
+ ]
+}

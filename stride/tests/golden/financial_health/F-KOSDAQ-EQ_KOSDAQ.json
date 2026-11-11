@@ -1,0 +1,85 @@
+{
+ "case_type": "F-KOSDAQ-EQ",
+ "sample": "KOSDAQ 후보",
+ "corp_code": "01031229",
+ "corp_name": "한국비티비",
+ "status": "ai_verified",
+ "request": {
+  "mode": "single",
+  "company": "01031229",
+  "as_of": "2024-04-02"
+ },
+ "verified_by": "AI 검수(claude.ai)",
+ "verified_at": "2026-11-05",
+ "human_verified": {
+  "verified": false,
+  "by": null,
+  "at": null
+ },
+ "expect": {
+  "market": "KOSDAQ",
+  "bsns_year": 2023,
+  "fs_basis": "CFS",
+  "fs_rcept_no": "20240401003960",
+  "capital_stock_krw": 2519327500,
+  "fin.equity_ex_nci_krw": 409021206,
+  "fin.capital_impairment_ratio_pct": 83.76,
+  "total_equity_krw": 409021206,
+  "fin.audit_opinion": [
+   "적정"
+  ],
+  "rule_input": "R3-KQ 입력",
+  "must_not_have_after": "2024-04-02"
+ },
+ "check_list": [
+  {
+   "rcept_no": "20240401003960",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20240401003960",
+   "where": "2023 사업보고서 연결 재무상태표",
+   "values": [
+    "자본금 2,519,327,500",
+    "지배기업 소유주지분 409,021,206",
+    "자본총계 409,021,206",
+    "자본잠식률 83.76% = (자본금 − 자기자본) / 자본금"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20240401003960",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20240401003960",
+   "where": "회계감사인의 명칭 및 감사의견",
+   "values": [
+    "당기 감사의견 적정"
+   ],
+   "value_status": [
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20240229901612",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20240229901612",
+   "where": "거래소 공시 (후보 탐색 근거)",
+   "values": [
+    "내부결산시점관리종목지정ㆍ형식적상장폐지ㆍ상장적격성실질심사사유발생, 접수 20240229",
+    "재무상태표 값과 내용이 맞는지"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  }
+ ],
+ "open_notes": [
+  "스캔 대상 중 자기자본 0~10억 코스닥 1곳뿐. 과거 사업연도라 as_of도 과거. 자본잠식률도 50% 이상이라 F-IMPAIR50 조건과 겹침",
+  "거래소 내부결산 공시 수치는 감사 전 값이라 기대값에 쓰지 않는다. 기대값은 사업보고서(감사 후) 값",
+  "거래소 내부결산 자본총계 636,889,882, 자본금 2,520,298,500 ≠ 감사 후 값. 보고서 당시 상호 지티지웰니스"
+ ]
+}

@@ -1,0 +1,186 @@
+{
+ "case_type": "G-CHANGE",
+ "sample": "1",
+ "corp_code": "00913689",
+ "corp_name": "세경하이테크",
+ "status": "ai_verified",
+ "request": {
+  "mode": "replay",
+  "company": "00913689",
+  "as_of_sequence": [
+   "2025-01-19",
+   "2025-06-29",
+   "2025-07-07",
+   "2025-10-28"
+  ]
+ },
+ "verified_by": "AI 검수(claude.ai)",
+ "verified_at": "2026-11-06",
+ "human_verified": {
+  "verified": false,
+  "by": null,
+  "at": null
+ },
+ "expect": {
+  "plan_date": "2024-12-20",
+  "change_date": "2025-06-30",
+  "steps": [
+   {
+    "as_of": "2025-01-19",
+    "in_scope": true,
+    "signal_status": "해외 투자 확정",
+    "alerts_must_have": [
+     "new_signal"
+    ],
+    "must_have_signals": [
+     {
+      "signal_type": "S4_confirmed",
+      "rcept_no": "20241220900448",
+      "target_country": "베트남",
+      "overseas_amount_krw": 21817985000
+     }
+    ],
+    "must_not_have_rcept_no": [
+     "20250630900515",
+     "20250630900523",
+     "20250918900092"
+    ]
+   },
+   {
+    "as_of": "2025-06-29",
+    "alerts_must_not_have": [
+     "plan_changed",
+     "stage_down",
+     "cancelled"
+    ],
+    "must_not_have_rcept_no": [
+     "20250630900515",
+     "20250630900523",
+     "20250918900092"
+    ],
+    "leak_check": "변경 언급 시 미래 정보 누수"
+   },
+   {
+    "as_of": "2025-07-07",
+    "in_scope": false,
+    "signal_status": "취소",
+    "scope_reason_has": "G4",
+    "stage": "MENTIONED",
+    "alerts_must_have": [
+     "cancelled",
+     "stage_down"
+    ],
+    "must_have_signals": [
+     {
+      "signal_type": "S6_alert",
+      "rcept_no": "20250630900523",
+      "change_direction": "취소/해제"
+     }
+    ],
+    "evidence_has": [
+     "20250630900515",
+     "20250630900523"
+    ],
+    "must_not_have_rcept_no": [
+     "20250918900092"
+    ]
+   },
+   {
+    "as_of": "2025-10-28",
+    "no_duplicate_project_for": "베트남",
+    "must_have_signals": [
+     {
+      "signal_type": "S4_confirmed",
+      "rcept_no": "20250918900092",
+      "target_country": "싱가포르",
+      "overseas_amount_krw": 12059528160,
+      "separate_project": true
+     }
+    ],
+    "must_not_have_rcept_no": [
+     "20251128900796"
+    ]
+   }
+  ]
+ },
+ "check_list": [
+  {
+   "rcept_no": "20241220900448",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20241220900448",
+   "where": "타법인 취득결정",
+   "values": [
+    "SEED SEGYUNG VINA(베트남), 회사와 관계 관계회사",
+    "취득금액 21,817,985,000, 지분 35%",
+    "취득예정일자 2025-06-30"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20250630900515",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250630900515",
+   "where": "정정",
+   "values": [
+    "정정사유 '투자구조 변경에 따른 취득결정 철회'",
+    "정정 후 칸이 모두 '-'"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20250630900523",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250630900523",
+   "where": "기타 주요경영사항 (철회)",
+   "values": [
+    "철회 사유 'SEED사 측의 투자구조 변경 요청'",
+    "결정일 2025-06-30"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20250918900092",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250918900092",
+   "where": "타법인 취득결정 (자율공시, 후속)",
+   "values": [
+    "SEED GLOBAL PTE. LIMITED (싱가포르), 지분 46.67%",
+    "취득금액 12,059,528,160",
+    "베트남 건과 같은 합작인지 원문에 적혀 있는지"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20251128900796",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20251128900796",
+   "where": "후속 건 정정",
+   "values": [
+    "취득예정일자 2025-11-28 → 2026-01-31 (as_of 2025-10-28 이후)"
+   ],
+   "value_status": [
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  }
+ ],
+ "open_notes": [
+  "기대값은 7.9·7.12 기준이다 (철회 → G4 실패, CANCELLED, cancelled 경보, 2026-11-05 결정으로 12.2·12.3 통일). stage 하락이라 stage_down도 함께 난다 (7.12)",
+  "싱가포르 건은 7.8 키(국가·방식)가 달라 별도 프로젝트. 같은 상대와의 구조 변경이지만 묶는 규칙은 없다",
+  "4번째 시점의 signal_status와 경보는 기대값에 넣지 않았다. 7.12에 '이전 CANCELLED → 새 프로젝트' 규칙이 없다",
+  "자금 공백은 이 유형 시험 대상이 아니라 넣지 않았다"
+ ]
+}

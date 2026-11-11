@@ -1,0 +1,85 @@
+{
+ "case_type": "F-FULLIMPAIR",
+ "sample": "KOSDAQ 후보",
+ "corp_code": "01182550",
+ "corp_name": "EDGC",
+ "status": "ai_verified",
+ "request": {
+  "mode": "single",
+  "company": "01182550",
+  "as_of": "2026-04-09"
+ },
+ "verified_by": "AI 검수(claude.ai)",
+ "verified_at": "2026-11-05",
+ "human_verified": {
+  "verified": false,
+  "by": null,
+  "at": null
+ },
+ "expect": {
+  "market": "KOSDAQ",
+  "bsns_year": 2025,
+  "fs_basis": "CFS",
+  "fs_rcept_no": "20260407003694",
+  "capital_stock_krw": 13849395100,
+  "fin.equity_ex_nci_krw": -22525441423,
+  "fin.capital_impairment_ratio_pct": 262.65,
+  "total_equity_krw": -22525441423,
+  "fin.audit_opinion": [
+   "적정의견"
+  ],
+  "rule_input": "자본잠식률 ≥ 100",
+  "must_not_have_after": "2026-04-09"
+ },
+ "check_list": [
+  {
+   "rcept_no": "20260407003694",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260407003694",
+   "where": "2025 사업보고서 연결 재무상태표",
+   "values": [
+    "자본금 13,849,395,100",
+    "지배기업 소유주지분 -22,525,441,423",
+    "자본총계 -22,525,441,423",
+    "자본잠식률 262.65% = (자본금 − 자기자본) / 자본금"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260407003694",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260407003694",
+   "where": "회계감사인의 명칭 및 감사의견",
+   "values": [
+    "당기 감사의견 적정의견"
+   ],
+   "value_status": [
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260227901919",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260227901919",
+   "where": "거래소 공시 (후보 탐색 근거)",
+   "values": [
+    "내부결산시점관리종목지정ㆍ형식적상장폐지ㆍ상장적격성실질심사사유발생, 접수 20260227",
+    "재무상태표 값과 내용이 맞는지"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  }
+ ],
+ "open_notes": [
+  "자기자본 ≤ 0. 부채비율은 자본총계 ≤ 0이라 None",
+  "거래소 내부결산 공시 수치는 감사 전 값이라 기대값에 쓰지 않는다. 기대값은 사업보고서(감사 후) 값",
+  "거래소 내부결산 자본총계 -17,885,319,546 ≠ 감사 후 -22,525,441,423. 보고서 당시 상호 이원다이애그노믹스"
+ ]
+}

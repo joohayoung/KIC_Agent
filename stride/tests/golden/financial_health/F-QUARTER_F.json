@@ -1,0 +1,90 @@
+{
+ "case_type": "F-QUARTER",
+ "sample": "F",
+ "corp_code": "00220613",
+ "corp_name": "넥스틸",
+ "status": "ai_verified",
+ "request": {
+  "mode": "single",
+  "company": "00220613",
+  "as_of": "2026-08-15"
+ },
+ "verified_by": "AI 검수(claude.ai)",
+ "verified_at": "2026-11-05",
+ "human_verified": {
+  "verified": false,
+  "by": null,
+  "at": null
+ },
+ "expect": {
+  "latest_report": {
+   "rcept_no": "20260814003809",
+   "period": "2026H1"
+  },
+  "annual_report": {
+   "rcept_no": "20260414002511",
+   "period": "2025FY"
+  },
+  "latest_basis": {
+   "cash_krw": 91580877950,
+   "short_term_krw": 47159690745,
+   "fin.ttm_operating_cash_flow_krw": 11886539325,
+   "fin.total_borrowings_krw": 209551430385,
+   "fin.net_debt_krw": 70810861690,
+   "fin.debt_ratio_pct": 79.29,
+   "period": "2026H1말"
+  },
+  "annual_basis": {
+   "fin.ebitda_krw": 55551889349,
+   "fin.net_debt_krw": 97761870322,
+   "fin.net_debt_to_ebitda": 1.76,
+   "fin.ebitda_interest_coverage": 15.51,
+   "fin.ebitda_margin_pct": 10.08,
+   "fin.ttm_operating_cash_flow_2025FY_krw": 23785556354
+  },
+  "must_not_have_after": "2026-08-15"
+ },
+ "check_list": [
+  {
+   "rcept_no": "20260814003809",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814003809",
+   "where": "2026 반기보고서",
+   "values": [
+    "접수 2026-08-14 (as_of 하루 전)",
+    "현금 91,580,877,950, 단기금융상품 47,159,690,745",
+    "총차입금 209,551,430,385",
+    "반기 누적 영업현금흐름 15,961,700,967, 전년 동기 27,860,717,996"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "draft",
+   "verification_method": [
+    "api_response",
+    "document",
+    "document",
+    "document"
+   ]
+  },
+  {
+   "rcept_no": "20260414002511",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260414002511",
+   "where": "2025 사업보고서 정정본",
+   "values": [
+    "연간 영업현금흐름 23,785,556,354",
+    "TTM 11,886,539,325 = 누적 + 연간 − 전년 동기"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  }
+ ],
+ "open_notes": [
+  "재무 기본 항목·순차입금은 반기 기준, 핵심 지표는 2025 사업보고서 기준"
+ ]
+}

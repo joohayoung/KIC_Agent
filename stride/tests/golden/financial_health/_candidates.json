@@ -1,0 +1,310 @@
+{
+ "_note": "재무 건전성 2단계 후보 제안 (2026-11-05 탐색). 정답지가 아니다. 값은 API 응답이고 정답 확정은 사람이 원문으로 한다. equity = 지배기업 소유주지분(연결) 또는 자본총계(별도), impair = (자본금-자기자본)/자본금*100.",
+ "search": "2021-11-05~2026-11-05 거래소 공시(관리종목·상장폐지 사유·감사의견·자본잠식) 유가증권·코스닥 249개 (기업, 사업연도). scripts/probe_fin_golden.py",
+ "candidates": {
+  "F-IMPAIR50": [
+   {
+    "corp_code": "00122825",
+    "corp_name": "프리티",
+    "stock_code": "006490",
+    "market": "KOSPI",
+    "bsns_year": 2025,
+    "fs_div": "CFS",
+    "equity_krw": 15164934954,
+    "capital_stock_krw": 62943058500,
+    "impair_pct": 75.91,
+    "adt_opinion_raw": [
+     "적정의견"
+    ],
+    "annual_report": {
+     "rcept_no": "20260407003654",
+     "rcept_dt": "20260408",
+     "report_nm": "사업보고서(2025.12)",
+     "corrections_after": 0
+    },
+    "suggested_as_of": "2026-04-09",
+    "signal_filings": {
+     "자본잠식50": [
+      "20260407",
+      "자본잠식50%이상또는매출액50억원미만사실발생",
+      "20260407801221"
+     ]
+    },
+    "why": "유가증권, 적정의견"
+   },
+   {
+    "corp_code": "00303192",
+    "corp_name": "디에이피",
+    "stock_code": "066900",
+    "market": "KOSDAQ",
+    "bsns_year": 2025,
+    "fs_div": "CFS",
+    "equity_krw": 5222168291,
+    "capital_stock_krw": 11372251500,
+    "impair_pct": 54.08,
+    "adt_opinion_raw": [
+     "적정의견"
+    ],
+    "annual_report": {
+     "rcept_no": "20260320001406",
+     "rcept_dt": "20260320",
+     "report_nm": "사업보고서(2025.12)",
+     "corrections_after": 1
+    },
+    "suggested_as_of": "2026-03-21",
+    "signal_filings": {
+     "내부결산": [
+      "20260313",
+      "내부결산시점관리종목지정ㆍ형식적상장폐지ㆍ상장적격성실질심사사유발생",
+      "20260313901600"
+     ]
+    },
+    "why": "코스닥, 적정의견"
+   }
+  ],
+  "F-FULLIMPAIR": [
+   {
+    "corp_code": "00125974",
+    "corp_name": "삼부토건",
+    "stock_code": "001470",
+    "market": "KOSPI",
+    "bsns_year": 2025,
+    "fs_div": "CFS",
+    "equity_krw": -142007257063,
+    "capital_stock_krw": 229681824000,
+    "impair_pct": 161.83,
+    "adt_opinion_raw": [
+     "적정의견"
+    ],
+    "annual_report": {
+     "rcept_no": "20260407002515",
+     "rcept_dt": "20260407",
+     "report_nm": "사업보고서(2025.12)",
+     "corrections_after": 1
+    },
+    "suggested_as_of": "2026-04-08",
+    "signal_filings": {
+     "자본잠식50": [
+      "20260303",
+      "자본잠식50%이상또는매출액50억원미만사실발생",
+      "20260303801248"
+     ]
+    },
+    "why": "유가증권, 적정의견"
+   },
+   {
+    "corp_code": "01182550",
+    "corp_name": "EDGC",
+    "stock_code": "245620",
+    "market": "KOSDAQ",
+    "bsns_year": 2025,
+    "fs_div": "CFS",
+    "equity_krw": -22525441423,
+    "capital_stock_krw": 13849395100,
+    "impair_pct": 262.65,
+    "adt_opinion_raw": [
+     "적정의견"
+    ],
+    "annual_report": {
+     "rcept_no": "20260407003694",
+     "rcept_dt": "20260408",
+     "report_nm": "사업보고서(2025.12)",
+     "corrections_after": 0
+    },
+    "suggested_as_of": "2026-04-09",
+    "signal_filings": {
+     "내부결산": [
+      "20260227",
+      "내부결산시점관리종목지정ㆍ형식적상장폐지ㆍ상장적격성실질심사사유발생",
+      "20260227901919"
+     ]
+    },
+    "why": "코스닥, 적정의견"
+   }
+  ],
+  "F-AUDIT": [
+   {
+    "corp_code": "01110678",
+    "corp_name": "유틸렉스",
+    "stock_code": "263050",
+    "market": "KOSDAQ",
+    "bsns_year": 2025,
+    "fs_div": "CFS",
+    "equity_krw": 15276891579,
+    "capital_stock_krw": 18417428000,
+    "impair_pct": 17.05,
+    "adt_opinion_raw": [
+     "의견거절"
+    ],
+    "annual_report": {
+     "rcept_no": "20260327001702",
+     "rcept_dt": "20260327",
+     "report_nm": "사업보고서(2025.12)",
+     "corrections_after": 0
+    },
+    "suggested_as_of": "2026-03-28",
+    "signal_filings": {
+     "내부결산": [
+      "20260325",
+      "내부결산시점관리종목지정ㆍ형식적상장폐지ㆍ상장적격성실질심사사유발생",
+      "20260325901362"
+     ],
+     "상장폐지사유": [
+      "20260518",
+      "주권매매거래정지기간변경(상장폐지사유발생)",
+      "20260518900999"
+     ]
+    },
+    "why": "코스닥, 의견거절"
+   },
+   {
+    "corp_code": "00428729",
+    "corp_name": "대호에이엘",
+    "stock_code": "069460",
+    "market": "KOSPI",
+    "bsns_year": 2025,
+    "fs_div": "CFS",
+    "equity_krw": 84405111704,
+    "capital_stock_krw": 105879785909,
+    "impair_pct": 20.28,
+    "adt_opinion_raw": [
+     "의견거절"
+    ],
+    "annual_report": {
+     "rcept_no": "20260324000005",
+     "rcept_dt": "20260324",
+     "report_nm": "사업보고서(2025.12)",
+     "corrections_after": 0
+    },
+    "suggested_as_of": "2026-03-25",
+    "signal_filings": {
+     "감사의견": [
+      "20260323",
+      "조회공시요구(외부감사의견)",
+      "20260323802235"
+     ],
+     "완전자본잠식": [
+      "20260814",
+      "반기검토의견부적정,의견거절또는완전자본잠식사실발생",
+      "20260814803827"
+     ]
+    },
+    "why": "유가증권, 의견거절"
+   },
+   {
+    "corp_code": "00453488",
+    "corp_name": "다이나믹디자인",
+    "stock_code": "145210",
+    "market": "KOSPI",
+    "bsns_year": 2025,
+    "fs_div": "CFS",
+    "equity_krw": 44718296774,
+    "capital_stock_krw": 21118334000,
+    "impair_pct": -111.75,
+    "adt_opinion_raw": [
+     "한정의견"
+    ],
+    "annual_report": {
+     "rcept_no": "20260323001749",
+     "rcept_dt": "20260323",
+     "report_nm": "사업보고서(2025.12)",
+     "corrections_after": 0
+    },
+    "suggested_as_of": "2026-03-24",
+    "signal_filings": {
+     "감사의견": [
+      "20260323",
+      "조회공시요구(외부감사의견)",
+      "20260323801890"
+     ]
+    },
+    "why": "유가증권, 한정의견 (범위제한 여부는 API로 판별 불가)"
+   }
+  ],
+  "F-KOSDAQ-EQ": [
+   {
+    "corp_code": "01031229",
+    "corp_name": "한국비티비",
+    "stock_code": "219750",
+    "market": "KOSDAQ",
+    "bsns_year": 2023,
+    "fs_div": "CFS",
+    "equity_krw": 409021206,
+    "capital_stock_krw": 2519327500,
+    "impair_pct": 83.76,
+    "adt_opinion_raw": [
+     "적정"
+    ],
+    "annual_report": {
+     "rcept_no": "20240401003960",
+     "rcept_dt": "20240401",
+     "report_nm": "사업보고서(2023.12)",
+     "corrections_after": 0
+    },
+    "suggested_as_of": "2024-04-02",
+    "signal_filings": {
+     "내부결산": [
+      "20240229",
+      "내부결산시점관리종목지정ㆍ형식적상장폐지ㆍ상장적격성실질심사사유발생",
+      "20240229901612"
+     ],
+     "감사의견": [
+      "20240321",
+      "기타시장안내(감사의견관련형식적상장폐지사유해소및매매거래정지지속안내)",
+      "20240321902843"
+     ]
+    },
+    "why": "스캔 대상 중 자기자본 0~10억 코스닥 1곳뿐, 과거 사업연도라 as_of도 과거"
+   }
+  ],
+  "F-NETCASH": [
+   {
+    "sample": "A",
+    "corp_code": "00877059",
+    "corp_name": "삼성바이오로직스",
+    "bsns_year": 2025,
+    "net_debt_krw_100m": -5289.3,
+    "why": "조건 순차입금 < 0. 2025 사업연도 A안 값 (api_fields.md 14.2)"
+   }
+  ],
+  "F-RESTRUCT": [
+   {
+    "corp_code": "00203315",
+    "corp_name": "콘텐트리중앙",
+    "filings": [
+     {
+      "rcept_dt": "20260616",
+      "rcept_no": "20260616000222",
+      "report_nm": "[기재정정]주요사항보고서(회생절차개시신청)"
+     },
+     {
+      "rcept_dt": "20260615",
+      "rcept_no": "20260615000002",
+      "report_nm": "주요사항보고서(회생절차개시신청)"
+     },
+     {
+      "rcept_dt": "20260616",
+      "rcept_no": "20260616800652",
+      "report_nm": "[기재정정]회생절차개시신청(종속회사의주요경영사항)"
+     },
+     {
+      "rcept_dt": "20260615",
+      "rcept_no": "20260615800033",
+      "report_nm": "회생절차개시신청(종속회사의주요경영사항)"
+     },
+     {
+      "rcept_dt": "20260630",
+      "rcept_no": "20260630800581",
+      "report_nm": "[기재정정]회생절차개시신청(종속회사의주요경영사항)"
+     },
+     {
+      "rcept_dt": "20260630",
+      "rcept_no": "20260630800563",
+      "report_nm": "회생절차개시결정"
+     }
+    ],
+    "why": "회생절차개시신청 + 개시결정이 모두 있는 유가증권 상장사"
+   }
+  ]
+ }
+}

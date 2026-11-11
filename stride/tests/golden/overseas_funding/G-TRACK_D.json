@@ -1,0 +1,351 @@
+{
+ "case_type": "G-TRACK",
+ "sample": "D",
+ "corp_code": "00474588",
+ "corp_name": "한중엔시에스",
+ "status": "ai_verified",
+ "request": {
+  "mode": "single",
+  "as_of_sequence": [
+   "2026-08-12",
+   "2026-08-22",
+   "2026-09-20"
+  ]
+ },
+ "verified_by": "AI 검수(claude.ai)",
+ "verified_at": "2026-11-05",
+ "review_source": "_review_batch1_검수결과.md (AI 검수, 사람 확인 아님)",
+ "human_verified": {
+  "verified": false,
+  "by": null,
+  "at": null
+ },
+ "expect": {
+  "steps": [
+   {
+    "as_of": "2026-08-12",
+    "in_scope": true,
+    "alerts_must_not_have": [
+     "new_funding"
+    ],
+    "must_not_have_rcept_no": [
+     "20260813001527",
+     "20260813001787",
+     "20260821900585",
+     "20260916900193"
+    ],
+    "funding_status": [
+     {
+      "rcept_no": "20250903000369",
+      "kind": "cb",
+      "final": "확정·현금 반영",
+      "fund_use_scopes": {
+       "fdpp_ocsa": "overseas"
+      }
+     },
+     {
+      "rcept_no": "20250903000379",
+      "kind": "rights",
+      "final": "확정·현금 반영",
+      "fund_use_scopes": {
+       "fdpp_ocsa": "overseas",
+       "fdpp_fclt": "unknown"
+      },
+      "open_question": "해외 용도 불명 칸: fdpp_fclt 3,000,000,000"
+     }
+    ]
+   },
+   {
+    "as_of": "2026-08-22",
+    "in_scope": true,
+    "alerts_must_have": [
+     "new_funding"
+    ],
+    "financial_base": {
+     "rcept_no": "20260814003007",
+     "period": "2026H1"
+    },
+    "must_have_signals": [
+     {
+      "signal_type": "S5_funding",
+      "rcept_no": "20260813001787",
+      "overseas_amount_krw": 60000000000,
+      "fund_use_scopes": {
+       "fdpp_ocsa": "overseas",
+       "fdpp_op": "unknown"
+      },
+      "open_question": "해외 용도 불명 칸: fdpp_op 20,000,000,000"
+     }
+    ],
+    "funding_status": [
+     {
+      "rcept_no": "20260813001787",
+      "decision_amount_krw": 80000000000,
+      "result_rcept_no": "20260821900585",
+      "actual_krw": 80000000000,
+      "pay": "20260821",
+      "final": "확정·합산"
+     }
+    ],
+    "cash_krw": 36189800449,
+    "short_term_krw": 800000000,
+    "ttm_ocf_krw": -7197296937,
+    "confirmed_funding_krw": 60000000000,
+    "unconfirmed_funding_krw": 0,
+    "available_funds_krw": 89792503512,
+    "overseas_investment_krw": 29080000000,
+    "funding_gap_krw": -60712503512,
+    "investment_notes": [
+     {
+      "rcept_no": "20251110900551",
+      "excluded": false,
+      "note": "연결 내부 출자, 집행 시점 확인 불가"
+     }
+    ],
+    "liquidity_draft": {
+     "investment_within_24m_krw": 29080000000,
+     "investment_beyond_24m_krw": 0,
+     "maturing_debt_1y_krw": 58035783951,
+     "dividends_paid_last_fy_krw": 0,
+     "liquidity_uses_krw": 87115783951,
+     "liquidity_surplus_krw": 2676719561,
+     "liquidity_sources_to_uses": 1.0307259998085487,
+     "status": "draft",
+     "note": "draft 2026-11-10: 방향 수정 지표. 이미 검수한 구성(현금·단기금융상품·TTM·확정 조달·투자액)에 새로 읽은 만기 차입금·배당금·예정일을 더한 값. 만기 차입금·배당금은 원문 대조 전이라 사람 검수 필요"
+    }
+   },
+   {
+    "as_of": "2026-09-20",
+    "project_count_same_as_previous": true,
+    "new_signal_same_project": {
+     "rcept_no": "20260916900193",
+     "amount_krw": 15833610000,
+     "part_of_earlier": "no"
+    },
+    "overseas_investment_krw": 44913610000,
+    "funding_gap_krw": -44878893512,
+    "available_funds_krw": 89792503512,
+    "merge_rule": "7.8: 회사명 칸 동일, 이사회 2025-11-10 / 2026-09-16, 3차·4차 출자",
+    "investment_notes": [
+     {
+      "rcept_no": "20251110900551",
+      "confirmed_execution_date": "2025-11-12",
+      "date_source_rcept_no": "20260916900193",
+      "excluded": false,
+      "note": "연결 내부 출자, 집행 시점 확인 불가"
+     },
+     {
+      "rcept_no": "20260916900193",
+      "scheduled_date": "2026-09-21",
+      "excluded": false,
+      "note": "연결 내부 출자, 집행 시점 확인 불가"
+     }
+    ],
+    "liquidity_draft": {
+     "investment_within_24m_krw": 44913610000,
+     "investment_beyond_24m_krw": 0,
+     "maturing_debt_1y_krw": 58035783951,
+     "dividends_paid_last_fy_krw": 0,
+     "liquidity_uses_krw": 102949393951,
+     "liquidity_surplus_krw": -13156890439,
+     "liquidity_sources_to_uses": 0.8722004090158881,
+     "status": "draft",
+     "note": "draft 2026-11-10: 방향 수정 지표. 이미 검수한 구성(현금·단기금융상품·TTM·확정 조달·투자액)에 새로 읽은 만기 차입금·배당금·예정일을 더한 값. 만기 차입금·배당금은 원문 대조 전이라 사람 검수 필요"
+    }
+   }
+  ],
+  "same_decision": {
+   "cb_rcept_no": "20260813001787",
+   "hybrid_capital_rcept_no": "20260813001612",
+   "reason": "7.5 R5: 회차 2, 권면 800억, 목적 칸, 납입일 2026-08-21, 이사회 2026-08-13 일치"
+  },
+  "subsidiary_execution": [
+   {
+    "rcept_no": "20251111900321",
+    "label": "종속회사 집행",
+    "amount_krw": 24331573328,
+    "added_to_representative": false
+   }
+  ],
+  "must_not_be_overseas": [
+   {
+    "rcept_no": "20251110900552",
+    "reason": "국내 공장 (기타 사항 문장)"
+   }
+  ]
+ },
+ "check_list": [
+  {
+   "rcept_no": "20260813001612",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260813001612",
+   "where": "자본으로인정되는채무증권 발행결정",
+   "values": [
+    "회차 2, 권면총액 800억",
+    "운영 200억, 타법인 600억",
+    "납입일 2026-08-21, 이사회 2026-08-13 (CB와 같은 결정인지)"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20251111900321",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20251111900321",
+   "where": "유형자산 취득결정 (종속회사)",
+   "values": [
+    "취득금액 243.3억",
+    "거래상대방 지배회사",
+    "미국 인디애나주 소재 문장"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260813001787",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260813001787",
+   "where": "전환사채권 발행결정 정정본",
+   "values": [
+    "권면총액 800억 (80,000,000,000)",
+    "타법인 증권 취득자금 600억, 운영자금 200억",
+    "납입일 2026-08-21 (예정)",
+    "자금 사용 목적 600억이 해외(미국 종속회사) 용도인지"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260821900585",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260821900585",
+   "where": "증권 발행결과",
+   "values": [
+    "증권 종류 제2회 사모 전환사채(채권형신종자본증권)",
+    "실제발행금액 800억",
+    "납입일 2026-08-21",
+    "최초 이사회결의일 2026-08-13"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20251110900551",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20251110900551",
+   "where": "타법인 취득결정",
+   "values": [
+    "HANJUNG AMERICA CO.(미국)",
+    "취득금액 290.8억 (29,080,000,000)",
+    "회사와 관계 종속회사",
+    "취득목적: 종속회사 생산기반 확보를 위한 시설 및 운영자금"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260916900193",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260916900193",
+   "where": "타법인 취득결정 (같은 대상)",
+   "values": [
+    "취득금액 158.3억 (15,833,610,000)",
+    "3차·4차 출자 문장 (별도 차수인지)",
+    "취득예정일 2026-09-21"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20251110900552",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20251110900552",
+   "where": "신규시설투자",
+   "values": [
+    "투자금액 190억",
+    "기타 사항 '해외가 아닌 국내 공장'"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20250903000369",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250903000369",
+   "where": "2025 CB 결정",
+   "values": [
+    "권면총액 150억, 타법인 증권 취득자금 150억"
+   ],
+   "value_status": [
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20250903000379",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250903000379",
+   "where": "2025 유상증자 결정",
+   "values": [
+    "시설 30억, 타법인 120억, 제3자배정"
+   ],
+   "value_status": [
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260814003007",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814003007",
+   "where": "2026 반기보고서 재무상태표·현금흐름표",
+   "values": [
+    "현금및현금성자산 361.9억",
+    "단기금융상품 8.0억",
+    "반기 누적 영업현금흐름 -86.2억, 전년 동기 -8.9억"
+   ],
+   "value_status": [
+    "ai_verified",
+    "ai_verified",
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  },
+  {
+   "rcept_no": "20260318000730",
+   "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260318000730",
+   "where": "2025 사업보고서 현금흐름표",
+   "values": [
+    "연간 영업현금흐름 5.3억 (TTM -72.0억 계산 입력)"
+   ],
+   "value_status": [
+    "ai_verified"
+   ],
+   "status": "ai_verified"
+  }
+ ],
+ "open_notes": [
+  "자금 공백은 음수로 계산됨. G-TRACK 기대값은 추적 동작이라 문제없고 G-POS로는 쓰지 않음",
+  "3차 출자 완료일 2025-11-12는 후속 공시(2026-09-16 접수)에 있어 as_of 2026-08-22에는 쓸 수 없다. 어느 시점이든 연결 내부 출자라 제외하지 않음"
+ ]
+}

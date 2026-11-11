@@ -1,0 +1,624 @@
+# STRIDE 공통 지표 목록 (core/metrics_catalog.yaml)
+# 버전: v0.16 (2026-11-10) — 유동성 원천·소요 지표 7개 추가 (S&P Liquidity Descriptors 준용 STRIDE 정의, 원문 403 미확인)
+# v0.15 (2026-11-05) — fin.ebitda_interest_coverage EBITDA 음수 시 값 그대로 + note (STRIDE 정의)
+# v0.14 (2026-11-05) — fin.ebitda_interest_coverage 이자비용 출처에 금융원가 주석 추가
+# v0.13 (2026-11-05) — ovs.available_internal_funds TTM 음수 그대로 사용
+# v0.12 (2026-11-05) — fin.short_term_financial_assets 행 없음 처리(fin.net_debt와 같은 규칙), ovs.confirmed·unconfirmed 해외 용도 금액을 정형 칸 기준으로 명시
+# v0.11 (2026-11-05) — ovs.confirmed_overseas_funding 조달 확정 근거를 결과 공시 연결로 통일(유상증자·CB·BW), ovs.unconfirmed_overseas_funding 추가
+# v0.10 (2026-11-05) — fin.total_borrowings 최신 보고서 리스부채 0 조건·사용권자산 포함 유형자산 태그 신호, fin.ttm_operating_cash_flow 사업연도 값 출력, ovs.confirmed_overseas_funding 유상증자 확정 근거 = 증권발행실적보고서
+# v0.9 (2026-11-05) — fin.total_borrowings 리스부채 채택 규칙(BS 행 → 주석 대조, 없으면 리스 주석 값, BS 사용권자산·주석 리스 절 모두 없을 때만 0, 그 외 None), 이중 합산 방지
+# v0.8 (2026-11-05) — fin.net_debt A안 확정(현금성자산 = 현금및현금성자산 + 단기금융상품, 한국기업평가 정의), 리스부채 0 처리 폐기(사용권자산 신호 있고 리스부채 행 없으면 missing), 순차입금·총차입금·부채비율에 최신 정기보고서 기준 추가(기준 보고서 선택 규칙), 부채비율 원문 대조 기록
+# v0.7 (2026-11-05) — 총차입금에 리스부채 전체 포함(STRIDE 정의, 원문 금융리스부채 포함 병기), fin.net_debt 현금성자산 범위 결정 전까지 methodology '확인 중'
+# v0.6 (2026-11-05) — EBITDA를 STRIDE 정의로 전환(감가상각비에 사용권자산 포함, 출처 = 사업보고서 연결 주석·현금흐름표 2출처 대조, 한국기업평가 원문은 사용권자산 언급 없음), EBITDA를 쓰는 비율(순차입금/EBITDA, EBITDA 마진) methodology 정정
+# v0.5 (2026-11-04) — 1단계 API 확인 반영: 단기금융상품·총차입금·EBITDA·EBITDA/이자비용 산식을 account_id 허용목록으로 확정, 감사의견 값을 응답 문자열 그대로로
+# v0.4 (2026-11-04) — 확인되지 않은 정보 제거: 모든 band를 null로(구간 표시 Phase 2), 재무 지표를 한국기업평가
+#        「주요 재무지표의 정의」(원문 확인)로 교체·기간을 사업연도별로, 3년 평균·Altman Z·band_methodology 삭제, fin.equity_ex_nci 추가
+# v0.3 (2026-11-04) / v0.2 (2026-11-03) / v0.1 (2026-11-03) — 이전 버전은 _이전버전/
+#
+# 규칙 (stride-agent-dev-standard 3-1장)
+# - 모든 Metric.metric_id 와 Classification.key 는 이 목록에 있는 것만 쓴다.
+# - 이미 있는 지표는 implementation 함수를 호출한다. 계산식을 복사하지 않는다.
+# - 정의 변경은 owner 에이전트만 한다. 바꾸면 used_by 에이전트 테스트를 모두 다시 돌린다.
+# - status: draft(설계만 됨) / confirmed(실제 데이터로 검증 완료)
+# - methodology에는 원문으로 확인한 출처만 쓴다. 원문이 없으면 "STRIDE 정의: <산식>".
+#
+# 에이전트 약어: ovs = overseas_funding, fin = financial_health
+
+- metric_id: fin.cash_and_equivalents
+  kind: metric
+  name: 현금및현금성자산
+  unit: 원
+  period: as_of 이전 접수된 최신 정기보고서의 기말 잔액
+  formula: 재무상태표 현금및현금성자산 (연결 우선, 없으면 별도)
+  methodology: K-IFRS 재무상태표 계정 (account_id ifrs-full_CashAndCashEquivalents)
+  source: DART 단일회사 전체 재무제표 (fnlttSinglAcntAll)
+  band: null
+  owner: financial_health
+  used_by:
+  - overseas_funding
+  implementation: core.calc.fin_items.cash_and_equivalents
+  status: draft
+- metric_id: fin.short_term_financial_assets
+  kind: metric
+  name: 단기금융상품
+  unit: 원
+  period: as_of 이전 접수된 최신 정기보고서의 기말 잔액
+  formula: 재무상태표(BS) account_id ifrs-full_ShorttermDepositsNotClassifiedAsCashEquivalents (연결 우선, 없으면 별도). 그 행이 없고 ifrs-full_OtherCurrentFinancialAssets 행도 없으면 0, ifrs-full_OtherCurrentFinancialAssets 행만 있으면 None
+  methodology: K-IFRS 재무상태표 계정 (account_id ifrs-full_ShorttermDepositsNotClassifiedAsCashEquivalents)
+  source: DART 단일회사 전체 재무제표 (fnlttSinglAcntAll)
+  band: null
+  owner: financial_health
+  used_by:
+  - overseas_funding
+  implementation: core.calc.fin_items.short_term_financial_assets
+  status: draft
+- metric_id: fin.ttm_operating_cash_flow
+  kind: metric
+  name: 최근 4분기 영업활동현금흐름
+  unit: 원
+  period: TTM (as_of 이전 접수된 최신 정기보고서 기준) + 사업연도별 (사업보고서 연간값, period {YYYY}FY) — 재무 건전성 개발문서 3.1
+  formula: 당기 누적 + 직전 사업연도 연간 - 전기 동기 누적 (사업보고서는 연간값 그대로)
+  methodology: K-IFRS 현금흐름표 영업활동현금흐름, 분기 누적값 차감 방식
+  source: DART 단일회사 전체 재무제표 (fnlttSinglAcntAll)
+  band: null
+  owner: financial_health
+  used_by:
+  - overseas_funding
+  implementation: core.calc.cashflow.ttm_operating_cash_flow
+  status: draft
+- metric_id: ovs.overseas_investment_amount
+  kind: metric
+  name: 대표 프로젝트 해외 투자액
+  unit: 원
+  period: as_of 기준
+  formula: '대표 금액 우선순위 — 주요사항보고서(취득·양수) 금액 > 조달 공시의 해외 용도 금액 > 정기보고서 계획 금액 > 기사 금액. 첫 번째로 값이 있는 것.
+
+    '
+  methodology: STRIDE 정의 (출처 등급 A > C 우선, 개발문서 7.8)
+  source: DART 주요사항보고서(DS005), DART 정기보고서 원문, 뉴스
+  band: null
+  owner: overseas_funding
+  used_by: []
+  implementation: agents.overseas_funding.calc.funding.investment_amount
+  status: draft
+- metric_id: ovs.confirmed_overseas_funding
+  kind: metric
+  name: 확정 조달액 (해외 용도)
+  unit: 원
+  period: as_of 기준
+  formula: '대표 프로젝트에 묶인 유상증자·CB·BW 결정 공시 중 결과 공시(증권발행실적보고서 또는 거래소 발행결과)가 같은 회사·같은 증권 종류·금액 일치로 연결되고 결과 공시 납입일이 재무 기준일 이후인 건의 해외 용도 금액 합. 해외 용도 금액 = 자금 사용 목적 칸(fdpp_*) 중 해외로 분류된 칸의 합이며 LLM 금액은 쓰지 않는다. 결정 공시 납입일은 예정일로 note에만 기록 (재무제표 현금과 중복 방지, 개발문서 11.2).
+
+    '
+  methodology: STRIDE 정의 (개발문서 11.2)
+  source: DART 주요사항보고서 (piicDecsn, cvbdIsDecsn, bdwtIsDecsn), 증권발행실적보고서 (pblntf_ty=C), 거래소 발행결과 공시 (pblntf_ty=I), document.xml
+  band: null
+  owner: overseas_funding
+  used_by: []
+  implementation: agents.overseas_funding.calc.funding.confirmed_funding
+  status: draft
+- metric_id: ovs.unconfirmed_overseas_funding
+  kind: metric
+  name: 미확정 조달액 (해외 용도)
+  unit: 원
+  period: as_of 기준
+  formula: '대표 프로젝트에 묶인 유상증자·CB·BW 결정 공시 중 결과 공시가 없거나 연결이 모호·금액 불일치인 건의 해외 용도 금액 합. ovs.available_internal_funds와 ovs.funding_gap 계산에 넣지 않는다 (개발문서 11.2).
+
+    '
+  methodology: STRIDE 정의 (개발문서 11.2)
+  source: DART 주요사항보고서 (piicDecsn, cvbdIsDecsn, bdwtIsDecsn), 증권발행실적보고서, 거래소 발행결과 공시
+  band: null
+  owner: overseas_funding
+  used_by: []
+  implementation: agents.overseas_funding.calc.funding.unconfirmed_funding
+  status: draft
+- metric_id: ovs.available_internal_funds
+  kind: metric
+  name: 가용 자금
+  unit: 원
+  period: as_of 기준
+  formula: 'fin.cash_and_equivalents + fin.short_term_financial_assets + fin.ttm_operating_cash_flow (음수 그대로) + ovs.confirmed_overseas_funding
+
+    '
+  methodology: '자금조달 우선순위 이론에 따라 내부 자금을 먼저 차감 (Myers & Majluf 1984; Shyam-Sunder & Myers 1999). 음수 TTM 영업현금흐름을 그대로 더하는 것은 STRIDE 정의
+
+    '
+  source: 위 구성 지표
+  band: null
+  owner: overseas_funding
+  used_by: []
+  implementation: agents.overseas_funding.calc.funding.available_funds
+  status: draft
+- metric_id: ovs.funding_gap
+  kind: metric
+  name: 자금 공백
+  unit: 원
+  period: as_of 기준
+  formula: ovs.overseas_investment_amount - ovs.available_internal_funds (양수 = 부족)
+  methodology: '외부자금 의존도 개념(설비투자 - 영업현금흐름)을 프로젝트 1건 단위로 적용 (Rajan & Zingales 1998). 원 논문은 산업 단위 장기 합계라는 차이가 있음.
+
+    '
+  source: 위 구성 지표
+  band: null
+  owner: overseas_funding
+  used_by: []
+  implementation: agents.overseas_funding.calc.funding.funding_gap
+  status: draft
+- metric_id: ovs.funding_gap_ratio
+  kind: metric
+  name: 자금 공백 비율
+  unit: 비율
+  period: as_of 기준
+  formula: ovs.funding_gap / ovs.overseas_investment_amount
+  methodology: Rajan & Zingales (1998) 외부자금 의존도 비율 형식의 프로젝트 단위 적용
+  source: 위 구성 지표
+  band: null
+  owner: overseas_funding
+  used_by: []
+  implementation: agents.overseas_funding.calc.funding.funding_gap_ratio
+  status: draft
+- metric_id: ovs.overseas_investment_within_24m
+  kind: metric
+  name: 24개월 내 해외 투자액
+  unit: 원
+  period: as_of 기준 (as_of ~ as_of+24개월)
+  formula: 대표 프로젝트 투자액(ovs.overseas_investment_amount에 들어간 건) 중 집행일(재무 기준일 이후 확정일, 없으면 취득·송금 예정일)이 as_of+24개월 이하인 건의 합. 날짜가 없는 건은 포함하고 note '예정일 없음'
+  methodology: 'S&P Liquidity Descriptors for Global Corporate Issuers(2014)·관련 가이드(2019) 준용, STRIDE 정의. 원문 PDF는 내려받기 실패(HTTP 403, 2026-11-10)로 문단 번호 미확인 — 원문 확인 전까지 S&P 기준값·구간을 쓰지 않는다. 차이: 은행 약정 한도·회사 전망치 미포함, 영업현금흐름은 TTM 실적'
+  source: DART 주요사항보고서(DS005), 정정 공시, 정기보고서 원문
+  band: null
+  owner: overseas_funding
+  used_by: []
+  implementation: agents.overseas_funding.calc.funding.investment_within_24m
+  status: draft
+- metric_id: ovs.overseas_investment_beyond_24m
+  kind: metric
+  name: 24개월 밖 해외 투자액
+  unit: 원
+  period: as_of 기준 (as_of+24개월 이후)
+  formula: 대표 프로젝트 투자액 중 집행일이 as_of+24개월 뒤인 건의 합. 유동성 소요에 넣지 않는다
+  methodology: 'S&P Liquidity Descriptors for Global Corporate Issuers(2014)·관련 가이드(2019) 준용, STRIDE 정의. 원문 PDF는 내려받기 실패(HTTP 403, 2026-11-10)로 문단 번호 미확인 — 원문 확인 전까지 S&P 기준값·구간을 쓰지 않는다. 차이: 은행 약정 한도·회사 전망치 미포함, 영업현금흐름은 TTM 실적'
+  source: DART 주요사항보고서(DS005), 정정 공시
+  band: null
+  owner: overseas_funding
+  used_by: []
+  implementation: agents.overseas_funding.calc.funding.investment_beyond_24m
+  status: draft
+- metric_id: fin.maturing_debt_1y
+  kind: metric
+  name: 1년 내 만기 차입금
+  unit: 원
+  period: as_of 이전 접수된 최신 정기보고서의 기말 잔액
+  formula: 재무상태표 유동 차입 계정(단기차입금·유동성장기차입금·유동성사채·유동성전환사채 등, core.calc.fin_items.CURRENT_DEBT_IDS) + 유동부채 절 안의 표준계정코드 미사용 차입·사채 행(이름 규칙). 리스부채 제외. 분류 안 되는 차입 행·빈 금액이 있으면 None, 행이 없으면 0
+  methodology: 'S&P Liquidity Descriptors for Global Corporate Issuers(2014)·관련 가이드(2019) 준용, STRIDE 정의. 원문 PDF는 내려받기 실패(HTTP 403, 2026-11-10)로 문단 번호 미확인 — 원문 확인 전까지 S&P 기준값·구간을 쓰지 않는다. 차이: 은행 약정 한도·회사 전망치 미포함, 영업현금흐름은 TTM 실적. 유동 분류는 K-IFRS 재무상태표 유동부채 구분을 따른다'
+  source: DART 단일회사 전체 재무제표 (fnlttSinglAcntAll)
+  band: null
+  owner: financial_health
+  used_by:
+  - overseas_funding
+  implementation: core.calc.fin_items.maturing_debt_1y
+  status: draft
+- metric_id: fin.dividends_paid_last_fy
+  kind: metric
+  name: 직전 사업연도 배당금 지급액
+  unit: 원
+  period: as_of 이전 접수된 최신 사업보고서의 사업연도
+  formula: 현금흐름표 배당금 지급 행(core.calc.fin_items.DIVIDEND_PAID_IDS, 없으면 표준계정코드 미사용 '배당금(의)지급' 행)의 절댓값 (연결 우선). 배당금 수취 행·신종자본증권 배당은 제외. 행이 없으면 0 (note '배당 지급 행 없음'), 여러 행이면 None
+  methodology: 'S&P Liquidity Descriptors for Global Corporate Issuers(2014)·관련 가이드(2019) 준용, STRIDE 정의. 원문 PDF는 내려받기 실패(HTTP 403, 2026-11-10)로 문단 번호 미확인 — 원문 확인 전까지 S&P 기준값·구간을 쓰지 않는다. 차이: 은행 약정 한도·회사 전망치 미포함, 영업현금흐름은 TTM 실적'
+  source: DART 단일회사 전체 재무제표 (fnlttSinglAcntAll), 사업보고서
+  band: null
+  owner: financial_health
+  used_by:
+  - overseas_funding
+  implementation: core.calc.fin_items.dividends_paid_last_fy
+  status: draft
+- metric_id: ovs.liquidity_uses
+  kind: metric
+  name: 유동성 소요
+  unit: 원
+  period: as_of 기준
+  formula: ovs.overseas_investment_within_24m + fin.maturing_debt_1y + fin.dividends_paid_last_fy. 하나라도 없으면 None
+  methodology: 'S&P Liquidity Descriptors for Global Corporate Issuers(2014)·관련 가이드(2019) 준용, STRIDE 정의. 원문 PDF는 내려받기 실패(HTTP 403, 2026-11-10)로 문단 번호 미확인 — 원문 확인 전까지 S&P 기준값·구간을 쓰지 않는다. 차이: 은행 약정 한도·회사 전망치 미포함, 영업현금흐름은 TTM 실적'
+  source: 위 구성 지표
+  band: null
+  owner: overseas_funding
+  used_by: []
+  implementation: agents.overseas_funding.calc.funding.liquidity_uses
+  status: draft
+- metric_id: ovs.liquidity_surplus
+  kind: metric
+  name: 유동성 원천 − 소요
+  unit: 원
+  period: as_of 기준
+  formula: ovs.available_internal_funds(원천 = 현금 + 단기금융상품 + TTM 영업CF + 확정 조달) − ovs.liquidity_uses. 구성 중 하나라도 없으면 None
+  methodology: 'S&P Liquidity Descriptors for Global Corporate Issuers(2014)·관련 가이드(2019) 준용, STRIDE 정의. 원문 PDF는 내려받기 실패(HTTP 403, 2026-11-10)로 문단 번호 미확인 — 원문 확인 전까지 S&P 기준값·구간을 쓰지 않는다. 차이: 은행 약정 한도·회사 전망치 미포함, 영업현금흐름은 TTM 실적'
+  source: 위 구성 지표
+  band: null
+  owner: overseas_funding
+  used_by: []
+  implementation: agents.overseas_funding.calc.funding.liquidity_surplus
+  status: draft
+- metric_id: ovs.liquidity_sources_to_uses
+  kind: metric
+  name: 유동성 원천 ÷ 소요
+  unit: 배
+  period: as_of 기준
+  formula: ovs.available_internal_funds ÷ ovs.liquidity_uses. 소요 0이면 None(note '소요 0'), 원천 음수는 그대로. 화면에는 1배 선만 표시하고 구간·등급을 두지 않는다
+  methodology: 'S&P Liquidity Descriptors for Global Corporate Issuers(2014)·관련 가이드(2019) 준용, STRIDE 정의. 원문 PDF는 내려받기 실패(HTTP 403, 2026-11-10)로 문단 번호 미확인 — 원문 확인 전까지 S&P 기준값·구간을 쓰지 않는다. 차이: 은행 약정 한도·회사 전망치 미포함, 영업현금흐름은 TTM 실적'
+  source: 위 구성 지표
+  band: null
+  owner: overseas_funding
+  used_by: []
+  implementation: agents.overseas_funding.calc.funding.liquidity_ratio
+  status: draft
+- metric_id: ovs.overseas_project_count
+  kind: metric
+  name: 범위 안 해외 프로젝트 수
+  unit: 건
+  period: as_of 기준, lookback 기간 내
+  formula: in_scope 조건(G1~G5)을 만족하는 프로젝트 수
+  methodology: STRIDE 정의 (개발문서 7.9)
+  source: DART 공시, 뉴스
+  band: null
+  owner: overseas_funding
+  used_by: []
+  implementation: agents.overseas_funding.nodes.scope_gate
+  status: draft
+- metric_id: ovs.signal_status
+  kind: classification
+  name: 해외 투자 신호 상태
+  values:
+  - 신호 없음
+  - 범위 밖
+  - 해외 투자 신호
+  - 해외 투자 확정
+  - 계획 변경
+  - 취소
+  rule: 개발문서 7.9(scope_gate), 7.12(update_state) 규칙
+  owner: overseas_funding
+  used_by: []
+  status: draft
+- metric_id: ovs.in_scope
+  kind: classification
+  name: 신규 해외 성장투자 신호 해당 여부
+  values:
+  - 'true'
+  - 'false'
+  rule: G1 상장사, G2 해외·성장투자 용도, G3 lookback 내 신호, G4 취소 아님, G5 신규 신호 (개발문서 7.9)
+  owner: overseas_funding
+  used_by: []
+  status: draft
+- metric_id: ovs.project_stage
+  kind: classification
+  name: 대표 프로젝트 진행 단계
+  values:
+  - 1 검토·언급
+  - 2 계획 공표
+  - 3 MOU·협약
+  - 4 이사회 결의
+  - 5 집행
+  rule: 개발문서 3장 Stage 정의, 10.2~10.4 분류 기준. 연기·축소 공시가 있으면 1단계 낮춤 (7.8)
+  owner: overseas_funding
+  used_by: []
+  status: draft
+- metric_id: ovs.investment_amount_source
+  kind: classification
+  name: 해외 투자액 출처 구분
+  values:
+  - major_event
+  - periodic
+  - news
+  - missing
+  rule: ovs.overseas_investment_amount 의 우선순위 중 실제로 쓰인 출처
+  owner: overseas_funding
+  used_by: []
+  status: draft
+- metric_id: fin.ebitda
+  kind: metric
+  name: EBITDA
+  unit: 원
+  period: 사업연도별 (as_of 이전 접수된 사업보고서)
+  formula: 영업이익(IS/CIS dart_OperatingIncomeLoss) + 감가상각비(사용권자산 감가상각 포함) + 무형자산상각비. 상각비는 사업보고서 연결 주석 '비용의 성격별 분류'(N)와 '영업에서 창출된 현금' 조정 내역 또는 연결현금흐름표 본문(C)을 대조해 채택 (재무 건전성 개발문서 9.1·12장). 사용권자산상각비가 C에 따로 있으면 더하고 이미 포함돼 있으면 그대로. 무형자산상각비 행이 없으면 BS 무형자산 행이 없거나 0일 때 0, 있으면 None(note '무형자산상각비 미공시'). 출처 불일치·비원화는 None
+  methodology: 'STRIDE 정의: 영업이익 + 감가상각비(사용권자산 감가상각 포함) + 무형자산상각비. 참고: 한국기업평가 「주요 재무지표의 정의」 EBITDA = EBIT+감가상각비+무형자산상각비, EBIT = 매출액-매출원가-판관비 (사용권자산 언급 없음, 2026-11-05 원문 확인)'
+  source: DART document.xml (사업보고서 연결 주석·연결현금흐름표), fnlttSinglAcntAll (영업이익, 재무상태표 무형자산)
+  band: null
+  owner: financial_health
+  used_by: []
+  implementation: core.calc.fin_items.ebitda
+  status: draft
+- metric_id: fin.total_borrowings
+  kind: metric
+  name: 총차입금
+  unit: 원
+  period: 사업연도별 (사업보고서) + 최신 정기보고서(분기·반기) 기준일 — 기준 보고서 선택 규칙은 재무 건전성 개발문서 3.1
+  formula: '재무상태표(BS) 차입금·사채 허용목록 account_id 행의 합 + 유동·비유동 리스부채. 차입·사채·리스부채 계열 행 중 허용목록 밖 행이 있거나 금액이 비면 None. 리스부채 채택 규칙(재무 건전성 개발문서 9.1): BS 리스부채 행이 있으면 BS 값을 쓰고 같은 보고서 리스 주석 값과 대조해 불일치(표 단위 1 초과)·대조 불가면 None. BS 행이 없으면 같은 보고서 연결 주석의 리스부채 잔액(유동+비유동, 없으면 합계)을 쓰고 note 리스부채 출처: 리스 주석. BS 사용권자산 신호(ifrs-full_RightofuseAssets 금액 > 0 또는 ifrs-full_PropertyPlantAndEquipmentIncludingRightofuseAssets 행) 없음 + 주석 리스 절 없음 + 주석 리스부채 값 없음일 때만 리스부채 0. 반기·분기보고서는 직전 사업보고서에도 리스부채가 없어야 하며, 아니면 None (note 최신 보고서 리스부채 미공시, 직전 사업보고서 금액을 섞지 않음). 그 외 None (note 리스부채 확인 불가). 이중 합산 방지: 총차입금에 넣는 차입·사채 행 이름에 리스가 있거나 주석 리스부채 표가 그 행의 구성 표이면 None'
+  methodology: 'STRIDE 정의: 재무상태표 차입금·사채 허용목록 계정 + 유동·비유동 리스부채 전체. 참고: 한국기업평가 「주요 재무지표의 정의」는 차입금 구성에 금융리스부채·유동성금융리스미지급금을 포함(K-IFRS 1116 이전 용어, 2026-11-05 원문 확인)'
+  source: DART fnlttSinglAcntAll (재무상태표), document.xml (같은 보고서 연결 주석 리스부채)
+  band: null
+  owner: financial_health
+  used_by: []
+  implementation: core.calc.fin_items.total_borrowings
+  status: draft
+- metric_id: fin.market_cap
+  kind: metric
+  name: 시가총액
+  unit: 원
+  period: as_of 기준일 (휴장일이면 직전 거래일)
+  formula: 기준일 종가 × 상장주식수 (API 제공값 우선)
+  methodology: 거래소 시가총액
+  source: KRX OPEN API 우선, 미승인 시 공공데이터포털 금융위원회_주식시세정보
+  band: null
+  owner: financial_health
+  used_by: []
+  implementation: core.calc.market.market_cap
+  status: draft
+- metric_id: fin.net_debt
+  kind: metric
+  name: 순차입금
+  unit: 원
+  period: 사업연도별 (사업보고서) + 최신 정기보고서(분기·반기) 기준일 — 기준 보고서 선택 규칙은 재무 건전성 개발문서 3.1
+  formula: 'fin.total_borrowings - (현금및현금성자산 + 단기금융상품). 단기금융상품 = BS ifrs-full_ShorttermDepositsNotClassifiedAsCashEquivalents. 그 행이 없고 ifrs-full_OtherCurrentFinancialAssets도 없으면 0, ifrs-full_OtherCurrentFinancialAssets만 있으면 None. 같은 기준 보고서의 BS 값끼리 계산'
+  methodology: '한국기업평가 「주요 재무지표의 정의」 (2026-11-05 원문 확인): 순차입금 = 총차입금-현금성자산, 현금성자산 = 현금및현금등가물+단기금융상품 등. 총차입금의 리스부채 포함 부분은 STRIDE 정의 (fin.total_borrowings)'
+  source: DART fnlttSinglAcntAll (재무상태표)
+  band: null
+  owner: financial_health
+  used_by: []
+  implementation: core.calc.fin_items.net_debt
+  status: draft
+- metric_id: fin.net_debt_to_ebitda
+  kind: metric
+  name: 순차입금/EBITDA
+  unit: 배
+  period: 사업연도별
+  formula: fin.net_debt / fin.ebitda (같은 사업연도. EBITDA ≤ 0이면 None)
+  methodology: 'STRIDE 정의: fin.net_debt / fin.ebitda (EBITDA는 STRIDE 정의)'
+  source: 위 구성 지표
+  band: null
+  owner: financial_health
+  used_by: []
+  implementation: core.calc.ratios.net_debt_to_ebitda
+  status: draft
+- metric_id: fin.ebitda_interest_coverage
+  kind: metric
+  name: EBITDA/이자비용
+  unit: 배
+  period: 사업연도별
+  formula: fin.ebitda / 이자비용. 이자비용 = CF dart_AdjustmentsForInterestExpenses, 없으면 연결 주석 금융원가 표 등 2개 표 이상에서 값이 같은 이자비용 행 (재무 건전성 개발문서 9.1a). 금융비용 합계로 대체하지 않음
+  methodology: 'STRIDE 정의: EBITDA/이자비용. 한국기업평가 EBITDA/금융비용과 분모가 다름(note 출력). EBITDA 음수면 값 그대로 출력하고 note EBITDA 음수'
+  source: 위 구성 지표
+  band: null
+  owner: financial_health
+  used_by: []
+  implementation: core.calc.ratios.ebitda_interest_coverage
+  status: draft
+- metric_id: fin.ebitda_margin
+  kind: metric
+  name: EBITDA 마진
+  unit: '%'
+  period: 사업연도별
+  formula: fin.ebitda / 매출액 × 100
+  methodology: 'STRIDE 정의: fin.ebitda / 매출액 × 100 (EBITDA는 STRIDE 정의. 산식 형태는 한국기업평가 EBITDA MARGIN과 같음)'
+  source: 위 구성 지표
+  band: null
+  owner: financial_health
+  used_by: []
+  implementation: core.calc.ratios.ebitda_margin
+  status: draft
+- metric_id: fin.capital_impairment_ratio
+  kind: metric
+  name: 자본잠식률
+  unit: '%'
+  period: 최근 사업연도말 (반기 기준은 별도 표시)
+  formula: (자본금 - 자기자본) / 자본금 × 100. 연결 기준이면 자기자본은 비지배지분 제외
+  methodology: 한국거래소 KIND 유가증권시장·코스닥시장 공시가이드(2026.2.2) 산식 (2026-11-04 원문 확인)
+  source: DART fnlttSinglAcntAll (재무상태표)
+  band: null
+  owner: financial_health
+  used_by:
+  - orchestrator
+  implementation: core.calc.ratios.capital_impairment_ratio
+  status: draft
+- metric_id: fin.equity_ex_nci
+  kind: metric
+  name: 자기자본 (비지배지분 제외)
+  unit: 원
+  period: 최근 사업연도말
+  formula: '연결: 지배기업 소유주지분, 별도: 자본총계'
+  methodology: 한국거래소 KIND 코스닥시장 공시가이드(2026.2.2) 자기자본 기준의 입력 (2026-11-04 원문 확인)
+  source: DART fnlttSinglAcntAll (재무상태표)
+  band: null
+  owner: financial_health
+  used_by:
+  - orchestrator
+  implementation: core.calc.fin_items.equity_ex_nci
+  status: draft
+- metric_id: fin.debt_ratio
+  kind: metric
+  name: 부채비율
+  unit: '%'
+  period: 최근 3개 사업연도 (사업보고서) + 최신 정기보고서(분기·반기) 기준일
+  formula: 'BS ifrs-full_Liabilities / ifrs-full_Equity × 100. 자본총계 ≤ 0이면 None (note 자본총계 ≤ 0)'
+  methodology: '한국기업평가 「주요 재무지표의 정의」 부채비율 = (부채총계/자본총계)*100 (2026-11-05 원문 재확인)'
+  source: DART fnlttSinglAcntAll
+  band: null
+  owner: financial_health
+  used_by: []
+  implementation: core.calc.ratios.debt_ratio
+  status: draft
+- metric_id: fin.current_ratio
+  kind: metric
+  name: 유동비율
+  unit: '%'
+  period: 최근 3개 사업연도 + 최근 분기
+  formula: 유동자산 / 유동부채 × 100
+  methodology: 'STRIDE 정의: 유동자산/유동부채×100'
+  source: DART fnlttSinglAcntAll
+  band: null
+  owner: financial_health
+  used_by: []
+  implementation: core.calc.ratios.current_ratio
+  status: draft
+- metric_id: fin.borrowing_dependency
+  kind: metric
+  name: 차입금의존도
+  unit: '%'
+  period: 최근 3개 사업연도 + 최근 분기
+  formula: fin.total_borrowings / 자산총계 × 100
+  methodology: 한국기업평가 「주요 재무지표의 정의」 (2026-11-04 원문 확인) (차입금/자산총계)
+  source: DART fnlttSinglAcntAll
+  band: null
+  owner: financial_health
+  used_by: []
+  implementation: core.calc.ratios.borrowing_dependency
+  status: draft
+- metric_id: fin.net_debt_to_ev
+  kind: metric
+  name: 순차입금/EV
+  unit: 비율
+  period: as_of 기준일
+  formula: fin.net_debt / (fin.market_cap + fin.net_debt)
+  methodology: 'STRIDE 정의: 산식 그대로 (시장 데이터는 선택 항목)'
+  source: 위 구성 지표
+  band: null
+  owner: financial_health
+  used_by: []
+  implementation: core.calc.market.net_debt_to_ev
+  status: draft
+- metric_id: fin.per
+  kind: metric
+  name: PER
+  unit: 배
+  period: as_of 기준일, 이익은 최근 사업연도 지배주주순이익
+  formula: fin.market_cap / 지배주주순이익
+  methodology: 'STRIDE 정의: 산식 그대로 (시장 데이터는 선택 항목)'
+  source: 위 구성 지표
+  band: null
+  owner: financial_health
+  used_by: []
+  implementation: core.calc.market.per
+  status: draft
+- metric_id: fin.pbr
+  kind: metric
+  name: PBR
+  unit: 배
+  period: as_of 기준일, 자본은 최근 정기보고서 지배주주지분
+  formula: fin.market_cap / 지배주주지분
+  methodology: 'STRIDE 정의: 산식 그대로 (시장 데이터는 선택 항목)'
+  source: 위 구성 지표
+  band: null
+  owner: financial_health
+  used_by: []
+  implementation: core.calc.market.pbr
+  status: draft
+- metric_id: fin.ev_to_ebitda
+  kind: metric
+  name: EV/EBITDA
+  unit: 배
+  period: as_of 기준일
+  formula: (fin.market_cap + fin.net_debt) / fin.ebitda (최근 사업연도)
+  methodology: 'STRIDE 정의: 산식 그대로 (시장 데이터는 선택 항목)'
+  source: 위 구성 지표
+  band: null
+  owner: financial_health
+  used_by: []
+  implementation: core.calc.market.ev_to_ebitda
+  status: draft
+- metric_id: fin.debt_maturity_profile
+  kind: metric
+  name: 차입금 만기 구조
+  unit: '-'
+  period: 최근 결산
+  formula: 해당 없음 (감사보고서 주석 파싱 필요)
+  methodology: 해당 없음
+  source: 사업보고서 주석
+  band: null
+  owner: financial_health
+  used_by:
+  - orchestrator
+  implementation: agents.financial_health.nodes.compute_metrics
+  status: draft
+- metric_id: fin.going_concern_note
+  kind: metric
+  name: 계속기업 불확실성 문단
+  unit: '-'
+  period: 최근 사업연도 감사보고서
+  formula: 해당 없음 (감사보고서 원문 파싱 필요)
+  methodology: 해당 없음
+  source: 감사보고서
+  band: null
+  owner: financial_health
+  used_by:
+  - orchestrator
+  implementation: agents.financial_health.nodes.compute_metrics
+  status: draft
+- metric_id: fin.credit_rating
+  kind: metric
+  name: 신용등급
+  unit: '-'
+  period: as_of
+  formula: 해당 없음 (신용평가 3사 공개 API 없음)
+  methodology: 해당 없음
+  source: 신용평가사 웹사이트
+  band: null
+  owner: financial_health
+  used_by:
+  - orchestrator
+  implementation: agents.financial_health.nodes.compute_metrics
+  status: draft
+- metric_id: fin.audit_opinion
+  kind: classification
+  name: 최근 사업연도 감사의견
+  values:
+  - <adt_opinion 응답 문자열 그대로, 앞뒤 공백 제거>
+  - missing
+  - unknown
+  rule: DART 정기보고서 주요정보 '회계감사인의 명칭 및 감사의견'(accnutAdtorNmNdAdtOpinion) 당기 행의 adt_opinion 값 그대로. 연결·별도 구분 없음. 사업연도는 요청 파라미터 bsns_year
+  owner: financial_health
+  used_by:
+  - orchestrator
+  status: draft
+- metric_id: fin.market_data_source
+  kind: classification
+  name: 시장 데이터 출처
+  values:
+  - krx_open_api
+  - data_go_kr_stock_price
+  - missing
+  rule: fin.market_cap 을 실제로 가져온 경로
+  owner: financial_health
+  used_by: []
+  status: draft
+- metric_id: fin.audit_scope_limitation
+  kind: classification
+  name: 감사범위 제한 여부
+  values:
+  - 'true'
+  - 'false'
+  - unknown
+  rule: adt_opinion·adt_reprt_spcmnt_matter에 '범위제한'·'감사범위' 문구가 있으면 true, 의견이 적정 계열(AUDIT_OPINION_MAP)이면 false, 그 외 unknown (KIND 공시가이드 감사범위 제한 기준의 입력)
+  owner: financial_health
+  used_by:
+  - orchestrator
+  status: draft
+- metric_id: fin.restructuring_status
+  kind: classification
+  name: 회생·워크아웃·파산 공시 상태
+  values:
+  - 없음
+  - 회생절차
+  - 워크아웃
+  - 파산
+  - 기타 구조조정
+  rule: as_of 이전 24개월 공시 보고서명 패턴 (재무 건전성 개발문서 9.3)
+  owner: financial_health
+  used_by:
+  - orchestrator
+  status: draft
+- metric_id: fin.fs_basis
+  kind: classification
+  name: 재무제표 구분
+  values:
+  - CFS
+  - OFS
+  rule: 연결 우선, 없으면 별도
+  owner: financial_health
+  used_by: []
+  status: draft

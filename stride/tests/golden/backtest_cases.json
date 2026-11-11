@@ -1,0 +1,8 @@
+{
+ "note": "구성문서 10.1 백테스트 사례. 해외 용도 조달 공시가 정답지로 확인된 건만 둔다. 기업명은 이 폴더에만.",
+ "cases": [
+  {"corp_code": "00474588", "corp_name": "한중엔시에스", "funding_rcept_no": "20260813001787", "funding_date": "2026-08-13", "funding_kind": "CB", "overseas_amount_krw": 60000000000, "source": "overseas_funding/G-TRACK_D.json"},
+  {"corp_code": "00474588", "corp_name": "한중엔시에스", "funding_rcept_no": "20250903000379", "funding_date": "2025-09-03", "funding_kind": "유상증자", "overseas_amount_krw": 11999903912, "source": "overseas_funding/G-MIX_D.json"},
+  {"corp_code": "00495633", "corp_name": "율촌", "funding_rcept_no": "20260605000303", "funding_date": "2026-05-22", "funding_kind": "CB", "overseas_amount_krw": 3000000000, "source": "overseas_funding/G-MIX_1.json"}
+ ]
+}
