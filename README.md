@@ -198,8 +198,8 @@ DART 응답은 로컬 캐시에 저장해 같은 요청을 다시 보내지 않�
 Windows (PowerShell)
 
 ```
-git clone https://github.com/<your-id>/STRIDE.git
-cd STRIDE
+git clone https://github.com/joohayoung/KIC_Agent.git
+cd KIC_Agent
 python -m venv .venv
 .venv\Scripts\python.exe -m pip install -r requirements.txt
 copy .env.example .env
@@ -208,8 +208,8 @@ copy .env.example .env
 macOS / Linux
 
 ```
-git clone https://github.com/<your-id>/STRIDE.git
-cd STRIDE
+git clone https://github.com/joohayoung/KIC_Agent.git
+cd KIC_Agent
 python3 -m venv .venv
 .venv/bin/python -m pip install -r requirements.txt
 cp .env.example .env
